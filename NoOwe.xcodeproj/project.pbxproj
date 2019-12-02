@@ -16,6 +16,19 @@
 		DC71529023955D7300924BFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC71528E23955D7300924BFA /* LaunchScreen.storyboard */; };
 		DC71529B23955D7300924BFA /* NoOweTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC71529A23955D7300924BFA /* NoOweTests.swift */; };
 		DC7152A623955D7300924BFA /* NoOweUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152A523955D7300924BFA /* NoOweUITests.swift */; };
+		DC7152BB2395765500924BFA /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152BA2395765500924BFA /* Dish.swift */; };
+		DC7152BD2395774C00924BFA /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152BC2395774C00924BFA /* Array+Extensions.swift */; };
+		DC7152BF23957BA000924BFA /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152BE23957BA000924BFA /* Task.swift */; };
+		DC7152C1239587F500924BFA /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152C0239587F500924BFA /* Episode.swift */; };
+		DC7152C323958A3F00924BFA /* FancyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152C223958A3F00924BFA /* FancyTimer.swift */; };
+		DC7152C523958C8400924BFA /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152C423958C8400924BFA /* UserSettings.swift */; };
+		DC7152C723958DD600924BFA /* FancyScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152C623958DD600924BFA /* FancyScoreView.swift */; };
+		DC7152C92395A54600924BFA /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152C82395A54600924BFA /* Weather.swift */; };
+		DC7152CC2395A5D800924BFA /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152CB2395A5D800924BFA /* WeatherService.swift */; };
+		DC7152CF2395A87C00924BFA /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152CE2395A87C00924BFA /* WeatherViewModel.swift */; };
+		DC7152D12395B07300924BFA /* Coffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152D02395B07300924BFA /* Coffee.swift */; };
+		DC7152D32395B26A00924BFA /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152D22395B26900924BFA /* Order.swift */; };
+		DC7152D52395B3FE00924BFA /* CoffeeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152D42395B3FE00924BFA /* CoffeeService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +64,19 @@
 		DC7152A123955D7300924BFA /* NoOweUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoOweUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC7152A523955D7300924BFA /* NoOweUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoOweUITests.swift; sourceTree = "<group>"; };
 		DC7152A723955D7300924BFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC7152BA2395765500924BFA /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
+		DC7152BC2395774C00924BFA /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		DC7152BE23957BA000924BFA /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		DC7152C0239587F500924BFA /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		DC7152C223958A3F00924BFA /* FancyTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyTimer.swift; sourceTree = "<group>"; };
+		DC7152C423958C8400924BFA /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		DC7152C623958DD600924BFA /* FancyScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyScoreView.swift; sourceTree = "<group>"; };
+		DC7152C82395A54600924BFA /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		DC7152CB2395A5D800924BFA /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		DC7152CE2395A87C00924BFA /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		DC7152D02395B07300924BFA /* Coffee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee.swift; sourceTree = "<group>"; };
+		DC7152D22395B26900924BFA /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		DC7152D42395B3FE00924BFA /* CoffeeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +127,9 @@
 		DC71527F23955D6F00924BFA /* NoOwe */ = {
 			isa = PBXGroup;
 			children = (
+				DC7152CD2395A85F00924BFA /* ViewModels */,
+				DC7152CA2395A5C400924BFA /* Services */,
+				DC7152B32395663B00924BFA /* Models */,
 				DC71528023955D6F00924BFA /* AppDelegate.swift */,
 				DC71528223955D6F00924BFA /* SceneDelegate.swift */,
 				DC71528723955D6F00924BFA /* ContentView.swift */,
@@ -109,6 +138,10 @@
 				DC71529123955D7300924BFA /* Info.plist */,
 				DC71528423955D6F00924BFA /* NoOwe.xcdatamodeld */,
 				DC71528B23955D7300924BFA /* Preview Content */,
+				DC7152BC2395774C00924BFA /* Array+Extensions.swift */,
+				DC7152C223958A3F00924BFA /* FancyTimer.swift */,
+				DC7152C423958C8400924BFA /* UserSettings.swift */,
+				DC7152C623958DD600924BFA /* FancyScoreView.swift */,
 			);
 			path = NoOwe;
 			sourceTree = "<group>";
@@ -137,6 +170,36 @@
 				DC7152A723955D7300924BFA /* Info.plist */,
 			);
 			path = NoOweUITests;
+			sourceTree = "<group>";
+		};
+		DC7152B32395663B00924BFA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DC7152BA2395765500924BFA /* Dish.swift */,
+				DC7152BE23957BA000924BFA /* Task.swift */,
+				DC7152C0239587F500924BFA /* Episode.swift */,
+				DC7152C82395A54600924BFA /* Weather.swift */,
+				DC7152D02395B07300924BFA /* Coffee.swift */,
+				DC7152D22395B26900924BFA /* Order.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DC7152CA2395A5C400924BFA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DC7152CB2395A5D800924BFA /* WeatherService.swift */,
+				DC7152D42395B3FE00924BFA /* CoffeeService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		DC7152CD2395A85F00924BFA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DC7152CE2395A87C00924BFA /* WeatherViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,9 +334,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC71528123955D6F00924BFA /* AppDelegate.swift in Sources */,
+				DC7152C1239587F500924BFA /* Episode.swift in Sources */,
+				DC7152D32395B26A00924BFA /* Order.swift in Sources */,
+				DC7152C323958A3F00924BFA /* FancyTimer.swift in Sources */,
+				DC7152CF2395A87C00924BFA /* WeatherViewModel.swift in Sources */,
+				DC7152C523958C8400924BFA /* UserSettings.swift in Sources */,
+				DC7152C92395A54600924BFA /* Weather.swift in Sources */,
+				DC7152BD2395774C00924BFA /* Array+Extensions.swift in Sources */,
+				DC7152C723958DD600924BFA /* FancyScoreView.swift in Sources */,
+				DC7152BB2395765500924BFA /* Dish.swift in Sources */,
 				DC71528623955D6F00924BFA /* NoOwe.xcdatamodeld in Sources */,
 				DC71528823955D7000924BFA /* ContentView.swift in Sources */,
+				DC7152D52395B3FE00924BFA /* CoffeeService.swift in Sources */,
+				DC7152BF23957BA000924BFA /* Task.swift in Sources */,
 				DC71528323955D6F00924BFA /* SceneDelegate.swift in Sources */,
+				DC7152CC2395A5D800924BFA /* WeatherService.swift in Sources */,
+				DC7152D12395B07300924BFA /* Coffee.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
