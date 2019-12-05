@@ -6,7 +6,7 @@
 //  Copyright © 2019 Filip Wicha. All rights reserved.
 //
 
-import UIKit
+import UIKit 
 import CoreData
 
 @UIApplicationMain
