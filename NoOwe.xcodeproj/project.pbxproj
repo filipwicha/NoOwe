@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC1247042398258D007C0328 /* OrderTotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1247032398258D007C0328 /* OrderTotalView.swift */; };
+		DC2CD18B2399B1CC00BD874B /* LoginUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CD18A2399B1CC00BD874B /* LoginUserViewModel.swift */; };
+		DC4C25922396FF570062D705 /* OrderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4C25912396FF570062D705 /* OrderListViewModel.swift */; };
+		DC4C2595239701CC0062D705 /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4C2594239701CC0062D705 /* OrderListView.swift */; };
+		DC6F9A622397111900D86A45 /* CreateOrderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6F9A612397111900D86A45 /* CreateOrderResponse.swift */; };
+		DC6F9A662397137C00D86A45 /* CoffeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6F9A652397137C00D86A45 /* CoffeeViewModel.swift */; };
+		DC6F9A6823981CF700D86A45 /* AddCoffeeOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6F9A6723981CF700D86A45 /* AddCoffeeOrderView.swift */; };
+		DC6F9A6A23981FFC00D86A45 /* AddCoffeeOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6F9A6923981FFC00D86A45 /* AddCoffeeOrderViewModel.swift */; };
 		DC71528123955D6F00924BFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC71528023955D6F00924BFA /* AppDelegate.swift */; };
 		DC71528323955D6F00924BFA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC71528223955D6F00924BFA /* SceneDelegate.swift */; };
 		DC71528623955D6F00924BFA /* NoOwe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC71528423955D6F00924BFA /* NoOwe.xcdatamodeld */; };
@@ -16,19 +24,18 @@
 		DC71529023955D7300924BFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC71528E23955D7300924BFA /* LaunchScreen.storyboard */; };
 		DC71529B23955D7300924BFA /* NoOweTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC71529A23955D7300924BFA /* NoOweTests.swift */; };
 		DC7152A623955D7300924BFA /* NoOweUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152A523955D7300924BFA /* NoOweUITests.swift */; };
-		DC7152BB2395765500924BFA /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152BA2395765500924BFA /* Dish.swift */; };
 		DC7152BD2395774C00924BFA /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152BC2395774C00924BFA /* Array+Extensions.swift */; };
-		DC7152BF23957BA000924BFA /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152BE23957BA000924BFA /* Task.swift */; };
-		DC7152C1239587F500924BFA /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152C0239587F500924BFA /* Episode.swift */; };
 		DC7152C323958A3F00924BFA /* FancyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152C223958A3F00924BFA /* FancyTimer.swift */; };
 		DC7152C523958C8400924BFA /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152C423958C8400924BFA /* UserSettings.swift */; };
 		DC7152C723958DD600924BFA /* FancyScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152C623958DD600924BFA /* FancyScoreView.swift */; };
-		DC7152C92395A54600924BFA /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152C82395A54600924BFA /* Weather.swift */; };
-		DC7152CC2395A5D800924BFA /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152CB2395A5D800924BFA /* WeatherService.swift */; };
-		DC7152CF2395A87C00924BFA /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152CE2395A87C00924BFA /* WeatherViewModel.swift */; };
 		DC7152D12395B07300924BFA /* Coffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152D02395B07300924BFA /* Coffee.swift */; };
 		DC7152D32395B26A00924BFA /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152D22395B26900924BFA /* Order.swift */; };
 		DC7152D52395B3FE00924BFA /* CoffeeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7152D42395B3FE00924BFA /* CoffeeService.swift */; };
+		DC845C6723985165002E0798 /* NightShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC845C6623985165002E0798 /* NightShift.swift */; };
+		DC845C6923996877002E0798 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC845C6823996877002E0798 /* User.swift */; };
+		DC845C6B2399694D002E0798 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC845C6A2399694D002E0798 /* WebService.swift */; };
+		DC845C6F23996E69002E0798 /* RegisterNewUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC845C6E23996E69002E0798 /* RegisterNewUserViewModel.swift */; };
+		DC845C74239970C8002E0798 /* RegisterNewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC845C73239970C8002E0798 /* RegisterNewUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +56,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC1247032398258D007C0328 /* OrderTotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTotalView.swift; sourceTree = "<group>"; };
+		DC2CD18A2399B1CC00BD874B /* LoginUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserViewModel.swift; sourceTree = "<group>"; };
+		DC4C25912396FF570062D705 /* OrderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewModel.swift; sourceTree = "<group>"; };
+		DC4C2594239701CC0062D705 /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
+		DC6F9A612397111900D86A45 /* CreateOrderResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrderResponse.swift; sourceTree = "<group>"; };
+		DC6F9A652397137C00D86A45 /* CoffeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeViewModel.swift; sourceTree = "<group>"; };
+		DC6F9A6723981CF700D86A45 /* AddCoffeeOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoffeeOrderView.swift; sourceTree = "<group>"; };
+		DC6F9A6923981FFC00D86A45 /* AddCoffeeOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoffeeOrderViewModel.swift; sourceTree = "<group>"; };
 		DC71527D23955D6F00924BFA /* NoOwe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoOwe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC71528023955D6F00924BFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC71528223955D6F00924BFA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,19 +79,18 @@
 		DC7152A123955D7300924BFA /* NoOweUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoOweUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC7152A523955D7300924BFA /* NoOweUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoOweUITests.swift; sourceTree = "<group>"; };
 		DC7152A723955D7300924BFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DC7152BA2395765500924BFA /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		DC7152BC2395774C00924BFA /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
-		DC7152BE23957BA000924BFA /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		DC7152C0239587F500924BFA /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		DC7152C223958A3F00924BFA /* FancyTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyTimer.swift; sourceTree = "<group>"; };
 		DC7152C423958C8400924BFA /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		DC7152C623958DD600924BFA /* FancyScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyScoreView.swift; sourceTree = "<group>"; };
-		DC7152C82395A54600924BFA /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
-		DC7152CB2395A5D800924BFA /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
-		DC7152CE2395A87C00924BFA /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		DC7152D02395B07300924BFA /* Coffee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee.swift; sourceTree = "<group>"; };
 		DC7152D22395B26900924BFA /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		DC7152D42395B3FE00924BFA /* CoffeeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeService.swift; sourceTree = "<group>"; };
+		DC845C6623985165002E0798 /* NightShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightShift.swift; sourceTree = "<group>"; };
+		DC845C6823996877002E0798 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DC845C6A2399694D002E0798 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		DC845C6E23996E69002E0798 /* RegisterNewUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNewUserViewModel.swift; sourceTree = "<group>"; };
+		DC845C73239970C8002E0798 /* RegisterNewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNewUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +118,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC4C2593239701980062D705 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DC71528723955D6F00924BFA /* ContentView.swift */,
+				DC4C2594239701CC0062D705 /* OrderListView.swift */,
+				DC6F9A6723981CF700D86A45 /* AddCoffeeOrderView.swift */,
+				DC1247032398258D007C0328 /* OrderTotalView.swift */,
+				DC845C6623985165002E0798 /* NightShift.swift */,
+				DC845C73239970C8002E0798 /* RegisterNewUser.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		DC71527423955D6F00924BFA = {
 			isa = PBXGroup;
 			children = (
@@ -127,12 +154,12 @@
 		DC71527F23955D6F00924BFA /* NoOwe */ = {
 			isa = PBXGroup;
 			children = (
+				DC4C2593239701980062D705 /* Views */,
 				DC7152CD2395A85F00924BFA /* ViewModels */,
 				DC7152CA2395A5C400924BFA /* Services */,
 				DC7152B32395663B00924BFA /* Models */,
 				DC71528023955D6F00924BFA /* AppDelegate.swift */,
 				DC71528223955D6F00924BFA /* SceneDelegate.swift */,
-				DC71528723955D6F00924BFA /* ContentView.swift */,
 				DC71528923955D7300924BFA /* Assets.xcassets */,
 				DC71528E23955D7300924BFA /* LaunchScreen.storyboard */,
 				DC71529123955D7300924BFA /* Info.plist */,
@@ -175,12 +202,10 @@
 		DC7152B32395663B00924BFA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DC7152BA2395765500924BFA /* Dish.swift */,
-				DC7152BE23957BA000924BFA /* Task.swift */,
-				DC7152C0239587F500924BFA /* Episode.swift */,
-				DC7152C82395A54600924BFA /* Weather.swift */,
 				DC7152D02395B07300924BFA /* Coffee.swift */,
 				DC7152D22395B26900924BFA /* Order.swift */,
+				DC6F9A612397111900D86A45 /* CreateOrderResponse.swift */,
+				DC845C6823996877002E0798 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -188,8 +213,8 @@
 		DC7152CA2395A5C400924BFA /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				DC7152CB2395A5D800924BFA /* WeatherService.swift */,
 				DC7152D42395B3FE00924BFA /* CoffeeService.swift */,
+				DC845C6A2399694D002E0798 /* WebService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -197,9 +222,21 @@
 		DC7152CD2395A85F00924BFA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				DC7152CE2395A87C00924BFA /* WeatherViewModel.swift */,
+				DC845C702399702B002E0798 /* User */,
+				DC4C25912396FF570062D705 /* OrderListViewModel.swift */,
+				DC6F9A652397137C00D86A45 /* CoffeeViewModel.swift */,
+				DC6F9A6923981FFC00D86A45 /* AddCoffeeOrderViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		DC845C702399702B002E0798 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				DC845C6E23996E69002E0798 /* RegisterNewUserViewModel.swift */,
+				DC2CD18A2399B1CC00BD874B /* LoginUserViewModel.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,21 +371,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC71528123955D6F00924BFA /* AppDelegate.swift in Sources */,
-				DC7152C1239587F500924BFA /* Episode.swift in Sources */,
+				DC4C2595239701CC0062D705 /* OrderListView.swift in Sources */,
 				DC7152D32395B26A00924BFA /* Order.swift in Sources */,
+				DC4C25922396FF570062D705 /* OrderListViewModel.swift in Sources */,
 				DC7152C323958A3F00924BFA /* FancyTimer.swift in Sources */,
-				DC7152CF2395A87C00924BFA /* WeatherViewModel.swift in Sources */,
 				DC7152C523958C8400924BFA /* UserSettings.swift in Sources */,
-				DC7152C92395A54600924BFA /* Weather.swift in Sources */,
 				DC7152BD2395774C00924BFA /* Array+Extensions.swift in Sources */,
+				DC2CD18B2399B1CC00BD874B /* LoginUserViewModel.swift in Sources */,
+				DC1247042398258D007C0328 /* OrderTotalView.swift in Sources */,
+				DC845C74239970C8002E0798 /* RegisterNewUser.swift in Sources */,
 				DC7152C723958DD600924BFA /* FancyScoreView.swift in Sources */,
-				DC7152BB2395765500924BFA /* Dish.swift in Sources */,
+				DC6F9A622397111900D86A45 /* CreateOrderResponse.swift in Sources */,
 				DC71528623955D6F00924BFA /* NoOwe.xcdatamodeld in Sources */,
 				DC71528823955D7000924BFA /* ContentView.swift in Sources */,
+				DC6F9A662397137C00D86A45 /* CoffeeViewModel.swift in Sources */,
+				DC845C6723985165002E0798 /* NightShift.swift in Sources */,
+				DC845C6B2399694D002E0798 /* WebService.swift in Sources */,
+				DC845C6F23996E69002E0798 /* RegisterNewUserViewModel.swift in Sources */,
 				DC7152D52395B3FE00924BFA /* CoffeeService.swift in Sources */,
-				DC7152BF23957BA000924BFA /* Task.swift in Sources */,
+				DC6F9A6823981CF700D86A45 /* AddCoffeeOrderView.swift in Sources */,
 				DC71528323955D6F00924BFA /* SceneDelegate.swift in Sources */,
-				DC7152CC2395A5D800924BFA /* WeatherService.swift in Sources */,
+				DC845C6923996877002E0798 /* User.swift in Sources */,
+				DC6F9A6A23981FFC00D86A45 /* AddCoffeeOrderViewModel.swift in Sources */,
 				DC7152D12395B07300924BFA /* Coffee.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
