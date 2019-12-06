@@ -3,42 +3,10 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var showModal: Bool = false
-    @ObservedObject private var loginUserViewModel = LoginUserViewModel()
-    
     var body: some View {
         NavigationView {
             
-            VStack {
-                Form {
-                    Section(header: Text("Enter email address")) {
-                        TextField("email@email.com", text: self.$loginUserViewModel.email)
-                    }
-                    Section(header: Text("Enter password"), footer: Text(self.loginUserViewModel.message)
-                    ){
-                        SecureField("password", text: self.$loginUserViewModel.password)
-                    }
-                }
-                
-                Button(action: {
-                    self.loginUserViewModel.loginUser()
-                }, label: {
-                    Text("Login")
-                    
-                })
-                
-                Button(action: {
-                    self.showModal.toggle()
-                }) {
-                    Text("Register!")
-                }
-                    
-                    
-                    
-                .sheet(isPresented: self.$showModal){
-                    RegisterNewUser()
-                }
-            }.navigationBarTitle("Coffee Orders")
+            LoginView()
             
             
             //        NavigationView {

@@ -1,5 +1,5 @@
 //
-//  RegisterNewUser().swift
+//  RegisterNewUserView().swift
 //  NoOwe
 //
 //  Created by Filip Wicha on 05/12/2019.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct RegisterNewUser: View {
+struct RegisterNewUserView: View {
     @Environment(\.presentationMode) var showModal: Binding<PresentationMode>
     @ObservedObject private var registerNewUserVM = RegisterNewUserViewModel()
     
@@ -16,10 +16,13 @@ struct RegisterNewUser: View {
         VStack{
             VStack {
                 Form {
-                    Section(header: Text("Enter email address")) {
+                    Section(
+                    header: Text("Enter email address")) {
                         TextField("email@email.com", text: self.$registerNewUserVM.email)
                     }
-                    Section(header: Text("Enter password"), footer: Text(self.registerNewUserVM.message)
+                    Section(
+                        header: Text("Enter password"),
+                        footer: Text(self.registerNewUserVM.message)
                     ){
                         SecureField("password", text: self.$registerNewUserVM.password)
                         SecureField("repeat", text: self.$registerNewUserVM.repeatedPassword)
@@ -27,22 +30,30 @@ struct RegisterNewUser: View {
                 }
             }
             
-            
-            
             Button(action: {
-                self.registerNewUserVM.registerUser()
+                
+                self.registerUser()
+                
                 if(self.registerNewUserVM.registered) {
-                    self.showModal.wrappedValue.dismiss()
+                    self.hideThisModal()
                 }
             }) {
-                Text("Register!")
+                Text("Register")
             }
         }
     }
+    
+    func registerUser(){
+        self.registerNewUserVM.registerUser()
+    }
+    
+    func hideThisModal(){
+        self.showModal.wrappedValue.dismiss()
+    }
 }
 
-struct RegisterNewUser_Previews: PreviewProvider {
+struct RegisterNewUserView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterNewUser()
+        RegisterNewUserView()
     }
 }

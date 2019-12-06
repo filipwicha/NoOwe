@@ -24,7 +24,7 @@ class LoginUserViewModel: ObservableObject {
         let user = User(email: self.email, password: self.password)
             
             self.webService.login(user: user) { message in
-                self.message = message!
+                self.message = message!.reason 
             }
             
             print("Login completed -> \(user.email): \(user.password)")

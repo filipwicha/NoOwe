@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		DC1247042398258D007C0328 /* OrderTotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1247032398258D007C0328 /* OrderTotalView.swift */; };
 		DC2CD18B2399B1CC00BD874B /* LoginUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CD18A2399B1CC00BD874B /* LoginUserViewModel.swift */; };
+		DC2CD18F239AACE300BD874B /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CD18E239AACE300BD874B /* LoginResponse.swift */; };
+		DC2CD192239ABC1600BD874B /* BudgetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CD191239ABC1600BD874B /* BudgetListViewModel.swift */; };
+		DC2CD196239ABD5D00BD874B /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CD195239ABD5D00BD874B /* Budget.swift */; };
+		DC2CD199239AC02900BD874B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CD198239AC02900BD874B /* LoginView.swift */; };
+		DC2CD19D239AC28200BD874B /* BudgetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CD19C239AC28200BD874B /* BudgetListView.swift */; };
 		DC4C25922396FF570062D705 /* OrderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4C25912396FF570062D705 /* OrderListViewModel.swift */; };
 		DC4C2595239701CC0062D705 /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4C2594239701CC0062D705 /* OrderListView.swift */; };
 		DC6F9A622397111900D86A45 /* CreateOrderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6F9A612397111900D86A45 /* CreateOrderResponse.swift */; };
@@ -58,6 +63,11 @@
 /* Begin PBXFileReference section */
 		DC1247032398258D007C0328 /* OrderTotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTotalView.swift; sourceTree = "<group>"; };
 		DC2CD18A2399B1CC00BD874B /* LoginUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserViewModel.swift; sourceTree = "<group>"; };
+		DC2CD18E239AACE300BD874B /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		DC2CD191239ABC1600BD874B /* BudgetListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListViewModel.swift; sourceTree = "<group>"; };
+		DC2CD195239ABD5D00BD874B /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
+		DC2CD198239AC02900BD874B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		DC2CD19C239AC28200BD874B /* BudgetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListView.swift; sourceTree = "<group>"; };
 		DC4C25912396FF570062D705 /* OrderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewModel.swift; sourceTree = "<group>"; };
 		DC4C2594239701CC0062D705 /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
 		DC6F9A612397111900D86A45 /* CreateOrderResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrderResponse.swift; sourceTree = "<group>"; };
@@ -118,15 +128,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC2CD190239ABBF900BD874B /* BudgetViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DC2CD191239ABC1600BD874B /* BudgetListViewModel.swift */,
+			);
+			path = BudgetViewModels;
+			sourceTree = "<group>";
+		};
+		DC2CD197239ABFB400BD874B /* UserViews */ = {
+			isa = PBXGroup;
+			children = (
+				DC845C73239970C8002E0798 /* RegisterNewUser.swift */,
+				DC2CD198239AC02900BD874B /* LoginView.swift */,
+			);
+			path = UserViews;
+			sourceTree = "<group>";
+		};
+		DC2CD19A239AC20700BD874B /* UserModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserModels;
+			sourceTree = "<group>";
+		};
+		DC2CD19B239AC24E00BD874B /* BudgetViews */ = {
+			isa = PBXGroup;
+			children = (
+				DC2CD19C239AC28200BD874B /* BudgetListView.swift */,
+			);
+			path = BudgetViews;
+			sourceTree = "<group>";
+		};
 		DC4C2593239701980062D705 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DC2CD19B239AC24E00BD874B /* BudgetViews */,
+				DC2CD197239ABFB400BD874B /* UserViews */,
 				DC71528723955D6F00924BFA /* ContentView.swift */,
 				DC4C2594239701CC0062D705 /* OrderListView.swift */,
 				DC6F9A6723981CF700D86A45 /* AddCoffeeOrderView.swift */,
 				DC1247032398258D007C0328 /* OrderTotalView.swift */,
 				DC845C6623985165002E0798 /* NightShift.swift */,
-				DC845C73239970C8002E0798 /* RegisterNewUser.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,10 +245,13 @@
 		DC7152B32395663B00924BFA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DC2CD19A239AC20700BD874B /* UserModels */,
 				DC7152D02395B07300924BFA /* Coffee.swift */,
 				DC7152D22395B26900924BFA /* Order.swift */,
 				DC6F9A612397111900D86A45 /* CreateOrderResponse.swift */,
 				DC845C6823996877002E0798 /* User.swift */,
+				DC2CD18E239AACE300BD874B /* LoginResponse.swift */,
+				DC2CD195239ABD5D00BD874B /* Budget.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -222,7 +268,8 @@
 		DC7152CD2395A85F00924BFA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				DC845C702399702B002E0798 /* User */,
+				DC2CD190239ABBF900BD874B /* BudgetViewModels */,
+				DC845C702399702B002E0798 /* UserViewModels */,
 				DC4C25912396FF570062D705 /* OrderListViewModel.swift */,
 				DC6F9A652397137C00D86A45 /* CoffeeViewModel.swift */,
 				DC6F9A6923981FFC00D86A45 /* AddCoffeeOrderViewModel.swift */,
@@ -230,13 +277,13 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		DC845C702399702B002E0798 /* User */ = {
+		DC845C702399702B002E0798 /* UserViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				DC845C6E23996E69002E0798 /* RegisterNewUserViewModel.swift */,
 				DC2CD18A2399B1CC00BD874B /* LoginUserViewModel.swift */,
 			);
-			path = User;
+			path = UserViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,8 +420,10 @@
 				DC71528123955D6F00924BFA /* AppDelegate.swift in Sources */,
 				DC4C2595239701CC0062D705 /* OrderListView.swift in Sources */,
 				DC7152D32395B26A00924BFA /* Order.swift in Sources */,
+				DC2CD19D239AC28200BD874B /* BudgetListView.swift in Sources */,
 				DC4C25922396FF570062D705 /* OrderListViewModel.swift in Sources */,
 				DC7152C323958A3F00924BFA /* FancyTimer.swift in Sources */,
+				DC2CD196239ABD5D00BD874B /* Budget.swift in Sources */,
 				DC7152C523958C8400924BFA /* UserSettings.swift in Sources */,
 				DC7152BD2395774C00924BFA /* Array+Extensions.swift in Sources */,
 				DC2CD18B2399B1CC00BD874B /* LoginUserViewModel.swift in Sources */,
@@ -384,11 +433,14 @@
 				DC6F9A622397111900D86A45 /* CreateOrderResponse.swift in Sources */,
 				DC71528623955D6F00924BFA /* NoOwe.xcdatamodeld in Sources */,
 				DC71528823955D7000924BFA /* ContentView.swift in Sources */,
+				DC2CD18F239AACE300BD874B /* LoginResponse.swift in Sources */,
 				DC6F9A662397137C00D86A45 /* CoffeeViewModel.swift in Sources */,
 				DC845C6723985165002E0798 /* NightShift.swift in Sources */,
 				DC845C6B2399694D002E0798 /* WebService.swift in Sources */,
 				DC845C6F23996E69002E0798 /* RegisterNewUserViewModel.swift in Sources */,
+				DC2CD192239ABC1600BD874B /* BudgetListViewModel.swift in Sources */,
 				DC7152D52395B3FE00924BFA /* CoffeeService.swift in Sources */,
+				DC2CD199239AC02900BD874B /* LoginView.swift in Sources */,
 				DC6F9A6823981CF700D86A45 /* AddCoffeeOrderView.swift in Sources */,
 				DC71528323955D6F00924BFA /* SceneDelegate.swift in Sources */,
 				DC845C6923996877002E0798 /* User.swift in Sources */,
