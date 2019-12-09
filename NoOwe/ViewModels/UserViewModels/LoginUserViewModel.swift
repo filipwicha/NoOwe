@@ -7,27 +7,39 @@
 //
 
 import Foundation
+import SwiftKeychainWrapper
 
 class LoginUserViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var message = "Fill the fields to login"
-    @Published var login = false
+    @Published var loginCompleated = false
     
     var webService: WebService
     
     init() {
         self.webService = WebService()
+        let dateString: String? = KeychainWrapper.standard.string(forKey: "expiresIn")
+        if dateString!.toDate() > Date() {
+            loginCompleated = true
+        }
     }
     
-    func loginUser(){
+    func loginUser() {
         let user = User(email: self.email, password: self.password)
-            
-            self.webService.login(user: user) { message in
-                self.message = message!.reason 
+        
+        self.webService.login(user: user) { response in
+            switch response {
+            case .success(_):
+                self.loginCompleated = true
+
+                //TODO: set jwt as global
+                print("Login completed -> \(user.email): \(user.password)")
+            case .failure(let error):
+                self.message = error.localizedDescription
             }
-            
-            print("Login completed -> \(user.email): \(user.password)")
+        }
+        
     }
 }
 

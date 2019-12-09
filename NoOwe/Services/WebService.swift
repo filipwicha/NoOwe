@@ -7,18 +7,28 @@
 //
 
 import Foundation
+import SwiftKeychainWrapper
 
 class WebService {
+    let baseURL: String = "https://noowe.herokuapp.com"
     
-    let jwtToken: String
-    let server: String = "https://noowe.herokuapp.com"
     init(){
-        self.jwtToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTU3NTY0Nzk2NSwiZXhwIjoxNTkxMTk5OTY1fQ._5quNjy5MkpxEVqTa3lsDH4zmK3Mzhk4OgvH8XGdCJY"
+
     }
     
-    func register(newUser: User, completion: @escaping (String?) -> ()) {
+    private let jsonDecoder: JSONDecoder = {
+        let jsonDecoder = JSONDecoder()
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
         
-        guard let url = URL(string: server + "/auth/signup") else {
+        jsonDecoder.dateDecodingStrategy = .formatted(formatter)
+        return jsonDecoder
+    }()
+    
+    func register(newUser: User, completion: @escaping (Result<String, Error>) -> ()) {
+        
+        guard let url = URL(string: baseURL + "/auth/signup") else {
             fatalError("Invalid URL")
         }
         
@@ -29,23 +39,25 @@ class WebService {
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             
-            guard let data = data, error == nil else{
+            guard let _ = data, error == nil else {
                 DispatchQueue.main.async {
-                    completion("\(String(describing: error))")
+                    completion(.failure(error!))
+                    print("Error getting data" + error!.localizedDescription )
                 }
                 return
             }
             
             DispatchQueue.main.async {
-                completion(String(data: data, encoding: .utf8))
+                completion(.success("Registration correct"))
             }
         }.resume()
     }
     
-    func login(user: User, completion: @escaping (LoginResponse?) -> ()) {
+    func login(user: User, completion: @escaping (Result<LoginResponse, Error>) -> ()) {
         
-        guard let url = URL(string: server + "/auth/signin") else {
-            fatalError("Invalid URL")
+        guard let url = URL(string: baseURL + "/auth/signin") else {
+            //completion(.failure(fatalError("Wrong url")))
+            return
         }
         
         var request = URLRequest(url: url)
@@ -55,45 +67,96 @@ class WebService {
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             
-            guard let data = data, error == nil else{
-                let errorResponse = try? JSONDecoder().decode(LoginResponse.self, from: error as! Data)
+            guard let data = data, error == nil else {
                 DispatchQueue.main.async {
-                    completion(errorResponse)
+                    completion(.failure(error!))
+                    print("Error getting data" + error!.localizedDescription )
                 }
                 return
             }
             
-            let loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: data)
-            DispatchQueue.main.async{
-                completion(loginResponse!)
+            DispatchQueue.main.async {
+                do{
+                    let response = try self.jsonDecoder.decode(LoginResponse.self, from: data)
+                    print("Login: " + response.accessToken)
+                    
+                    let dateString: String = response.expiresIn.toString()
+                    
+                    print(response.accessToken)
+                    
+                    KeychainWrapper.standard.set(user.email, forKey: "email")
+                    KeychainWrapper.standard.set(user.password, forKey: "password")
+                    KeychainWrapper.standard.set(response.accessToken , forKey: "jwtToken")
+                    KeychainWrapper.standard.set(dateString, forKey: "expiresIn")
+
+                    completion(.success(response))
+                    print("Login correct" )
+                } catch let error {
+                    completion(.failure(error))
+                    print("Error parsing json to model" )
+                    return
+                }
             }
         }.resume()
     }
     
-    func getBudgets(completion: @escaping ([Budget]?) -> ()){
-        guard let url = URL(string: server + "/budgets") else {
-            completion(nil)
-            fatalError("Invalid URL")
+    func getBudgets(completion: @escaping (Result<[Budget], Error>) -> ()){
+        guard let url = URL(string: baseURL + "/budgets") else {
+            //completion(.failure(fatalError("Wrong url")))
+            return
         }
-        
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue(jwtToken, forHTTPHeaderField: "x-access-token")
+        request.addValue(getToken(), forHTTPHeaderField: "x-access-token")
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             
-            guard let data = data, error == nil else{
+            guard let data = data, error == nil else {
                 DispatchQueue.main.async {
-                    completion(nil)
+                    completion(.failure(error!))
+                    print("Error getting data" + error!.localizedDescription )
                 }
                 return
             }
             
-            let budgets = try? JSONDecoder().decode([Budget].self, from: data)
             DispatchQueue.main.async {
-                completion(budgets)
+                do {
+                    let response = try self.jsonDecoder.decode([Budget].self, from: data)
+                    completion(.success(response))
+                    print("Got budgets correctly" )
+                } catch let error {
+                    completion(.failure(error))
+                    print("Error parsing json to budget model" )
+                    
+                    return
+                }
             }
         }.resume()
     }
+    
+    func getToken() -> String {
+        var jwtToken: String = ""
+        
+        let dateString: String = KeychainWrapper.standard.string(forKey: "expiresIn") ?? ""
+        
+        if (dateString.toDate() > Date()){
+            return KeychainWrapper.standard.string(forKey: "jwtToken") ?? ""
+        } else {
+            let user: User = User(email: KeychainWrapper.standard.string(forKey: "email")!, password: KeychainWrapper.standard.string(forKey: "password")!)
+            
+            login(user: user) { response in
+                switch response {
+                case .success(_):
+                    jwtToken = KeychainWrapper.standard.string(forKey: "jwtToken")!
+                    
+                case .failure(_):
+                    jwtToken = ""
+                }
+            }
+            
+            return jwtToken
+        }
+    }
 }
+

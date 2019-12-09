@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct Budget : Codable {
+struct Budget: Codable, Identifiable {
     
     let id: Int
     let name: String
     let color: String
     let owner_id: Int
     let currency_id: Int
-    
+    let transactions: [Transaction]
 }

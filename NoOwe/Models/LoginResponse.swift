@@ -14,6 +14,4 @@ struct LoginResponse: Codable {
     let expiresIn: Date
     let accessToken: String
     let id: Int
-    
-    let reason: String
 }

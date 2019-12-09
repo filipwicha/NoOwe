@@ -15,7 +15,7 @@ class RegisterNewUserViewModel: ObservableObject {
     
     @Published var message = "Fill the form to register"
     @Published var validated = false
-    @Published var registered = false
+    @Published var registrationCompleated = false
     
     var webService: WebService
     
@@ -29,12 +29,18 @@ class RegisterNewUserViewModel: ObservableObject {
         if validated {
             let newUser = User(email: self.email, password: self.password)
             
-            self.webService.register(newUser: newUser) { message in
-                self.message = message!
+            self.webService.register(newUser: newUser) { response in
+                switch response {
+                    
+                case .success(let message):
+                    self.message = message
+                    print("Registered new user -> \(newUser.email): \(newUser.password)")
+                    self.registrationCompleated = true
+                case .failure(let error):
+                    self.message = error.localizedDescription
+                }
             }
-            
-            self.registered = true
-            print("Registered new user -> \(newUser.email): \(newUser.password)")
+
         } else {
             print("Wrong credentials")
         }

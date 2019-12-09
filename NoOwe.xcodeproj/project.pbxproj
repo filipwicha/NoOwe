@@ -3,11 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CE4BE4ED7D7FD4454626603 /* Pods_NoOwe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2D8EB55DF1B7CEF547CB4F /* Pods_NoOwe.framework */; };
 		DC1247042398258D007C0328 /* OrderTotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1247032398258D007C0328 /* OrderTotalView.swift */; };
+		DC1B5EA3239EEEED003B312B /* ExtensionFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1B5EA2239EEEED003B312B /* ExtensionFunctions.swift */; };
+		DC1B5EA5239F0375003B312B /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1B5EA4239F0375003B312B /* Transaction.swift */; };
 		DC2CD18B2399B1CC00BD874B /* LoginUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CD18A2399B1CC00BD874B /* LoginUserViewModel.swift */; };
 		DC2CD18F239AACE300BD874B /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CD18E239AACE300BD874B /* LoginResponse.swift */; };
 		DC2CD192239ABC1600BD874B /* BudgetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CD191239ABC1600BD874B /* BudgetListViewModel.swift */; };
@@ -61,13 +64,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB2D8EB55DF1B7CEF547CB4F /* Pods_NoOwe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoOwe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE513BE6EC47EF9F97637AA6 /* Pods-NoOwe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoOwe.debug.xcconfig"; path = "Target Support Files/Pods-NoOwe/Pods-NoOwe.debug.xcconfig"; sourceTree = "<group>"; };
 		DC1247032398258D007C0328 /* OrderTotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTotalView.swift; sourceTree = "<group>"; };
+		DC1B5EA2239EEEED003B312B /* ExtensionFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionFunctions.swift; sourceTree = "<group>"; };
+		DC1B5EA4239F0375003B312B /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		DC2CD18A2399B1CC00BD874B /* LoginUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserViewModel.swift; sourceTree = "<group>"; };
 		DC2CD18E239AACE300BD874B /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		DC2CD191239ABC1600BD874B /* BudgetListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListViewModel.swift; sourceTree = "<group>"; };
 		DC2CD195239ABD5D00BD874B /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		DC2CD198239AC02900BD874B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DC2CD19C239AC28200BD874B /* BudgetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListView.swift; sourceTree = "<group>"; };
+		DC423341239EA7C500620541 /* NoOwe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoOwe.entitlements; sourceTree = "<group>"; };
 		DC4C25912396FF570062D705 /* OrderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewModel.swift; sourceTree = "<group>"; };
 		DC4C2594239701CC0062D705 /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
 		DC6F9A612397111900D86A45 /* CreateOrderResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrderResponse.swift; sourceTree = "<group>"; };
@@ -101,6 +109,7 @@
 		DC845C6A2399694D002E0798 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		DC845C6E23996E69002E0798 /* RegisterNewUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNewUserViewModel.swift; sourceTree = "<group>"; };
 		DC845C73239970C8002E0798 /* RegisterNewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNewUser.swift; sourceTree = "<group>"; };
+		F33DA388FD3E042505D150D8 /* Pods-NoOwe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoOwe.release.xcconfig"; path = "Target Support Files/Pods-NoOwe/Pods-NoOwe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CE4BE4ED7D7FD4454626603 /* Pods_NoOwe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +138,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E3203BA1A1D5F582BDE2685 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB2D8EB55DF1B7CEF547CB4F /* Pods_NoOwe.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ACF90BA4C6F7D4F4651C8984 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CE513BE6EC47EF9F97637AA6 /* Pods-NoOwe.debug.xcconfig */,
+				F33DA388FD3E042505D150D8 /* Pods-NoOwe.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DC1B5EA1239EEED9003B312B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DC1B5EA2239EEEED003B312B /* ExtensionFunctions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		DC2CD190239ABBF900BD874B /* BudgetViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,13 +180,6 @@
 			path = UserViews;
 			sourceTree = "<group>";
 		};
-		DC2CD19A239AC20700BD874B /* UserModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UserModels;
-			sourceTree = "<group>";
-		};
 		DC2CD19B239AC24E00BD874B /* BudgetViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,13 +191,10 @@
 		DC4C2593239701980062D705 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DCD7CEA0239C19A100BF3EA4 /* Old */,
 				DC2CD19B239AC24E00BD874B /* BudgetViews */,
 				DC2CD197239ABFB400BD874B /* UserViews */,
 				DC71528723955D6F00924BFA /* ContentView.swift */,
-				DC4C2594239701CC0062D705 /* OrderListView.swift */,
-				DC6F9A6723981CF700D86A45 /* AddCoffeeOrderView.swift */,
-				DC1247032398258D007C0328 /* OrderTotalView.swift */,
-				DC845C6623985165002E0798 /* NightShift.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -181,6 +206,8 @@
 				DC71529923955D7300924BFA /* NoOweTests */,
 				DC7152A423955D7300924BFA /* NoOweUITests */,
 				DC71527E23955D6F00924BFA /* Products */,
+				ACF90BA4C6F7D4F4651C8984 /* Pods */,
+				5E3203BA1A1D5F582BDE2685 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -197,6 +224,9 @@
 		DC71527F23955D6F00924BFA /* NoOwe */ = {
 			isa = PBXGroup;
 			children = (
+				DC1B5EA1239EEED9003B312B /* Extensions */,
+				DC423341239EA7C500620541 /* NoOwe.entitlements */,
+				DCD7CEA3239C19DF00BF3EA4 /* Old */,
 				DC4C2593239701980062D705 /* Views */,
 				DC7152CD2395A85F00924BFA /* ViewModels */,
 				DC7152CA2395A5C400924BFA /* Services */,
@@ -208,10 +238,6 @@
 				DC71529123955D7300924BFA /* Info.plist */,
 				DC71528423955D6F00924BFA /* NoOwe.xcdatamodeld */,
 				DC71528B23955D7300924BFA /* Preview Content */,
-				DC7152BC2395774C00924BFA /* Array+Extensions.swift */,
-				DC7152C223958A3F00924BFA /* FancyTimer.swift */,
-				DC7152C423958C8400924BFA /* UserSettings.swift */,
-				DC7152C623958DD600924BFA /* FancyScoreView.swift */,
 			);
 			path = NoOwe;
 			sourceTree = "<group>";
@@ -245,13 +271,11 @@
 		DC7152B32395663B00924BFA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DC2CD19A239AC20700BD874B /* UserModels */,
-				DC7152D02395B07300924BFA /* Coffee.swift */,
-				DC7152D22395B26900924BFA /* Order.swift */,
-				DC6F9A612397111900D86A45 /* CreateOrderResponse.swift */,
-				DC845C6823996877002E0798 /* User.swift */,
 				DC2CD18E239AACE300BD874B /* LoginResponse.swift */,
+				DC845C6823996877002E0798 /* User.swift */,
 				DC2CD195239ABD5D00BD874B /* Budget.swift */,
+				DCD7CEA2239C19C700BF3EA4 /* Old */,
+				DC1B5EA4239F0375003B312B /* Transaction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -268,11 +292,9 @@
 		DC7152CD2395A85F00924BFA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				DCD7CEA1239C19B600BF3EA4 /* Old */,
 				DC2CD190239ABBF900BD874B /* BudgetViewModels */,
 				DC845C702399702B002E0798 /* UserViewModels */,
-				DC4C25912396FF570062D705 /* OrderListViewModel.swift */,
-				DC6F9A652397137C00D86A45 /* CoffeeViewModel.swift */,
-				DC6F9A6923981FFC00D86A45 /* AddCoffeeOrderViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -286,6 +308,48 @@
 			path = UserViewModels;
 			sourceTree = "<group>";
 		};
+		DCD7CEA0239C19A100BF3EA4 /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				DC4C2594239701CC0062D705 /* OrderListView.swift */,
+				DC6F9A6723981CF700D86A45 /* AddCoffeeOrderView.swift */,
+				DC1247032398258D007C0328 /* OrderTotalView.swift */,
+				DC845C6623985165002E0798 /* NightShift.swift */,
+			);
+			path = Old;
+			sourceTree = "<group>";
+		};
+		DCD7CEA1239C19B600BF3EA4 /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				DC4C25912396FF570062D705 /* OrderListViewModel.swift */,
+				DC6F9A652397137C00D86A45 /* CoffeeViewModel.swift */,
+				DC6F9A6923981FFC00D86A45 /* AddCoffeeOrderViewModel.swift */,
+			);
+			path = Old;
+			sourceTree = "<group>";
+		};
+		DCD7CEA2239C19C700BF3EA4 /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				DC7152D02395B07300924BFA /* Coffee.swift */,
+				DC7152D22395B26900924BFA /* Order.swift */,
+				DC6F9A612397111900D86A45 /* CreateOrderResponse.swift */,
+			);
+			path = Old;
+			sourceTree = "<group>";
+		};
+		DCD7CEA3239C19DF00BF3EA4 /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				DC7152BC2395774C00924BFA /* Array+Extensions.swift */,
+				DC7152C223958A3F00924BFA /* FancyTimer.swift */,
+				DC7152C423958C8400924BFA /* UserSettings.swift */,
+				DC7152C623958DD600924BFA /* FancyScoreView.swift */,
+			);
+			path = Old;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -293,9 +357,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC7152AA23955D7300924BFA /* Build configuration list for PBXNativeTarget "NoOwe" */;
 			buildPhases = (
+				228416DB653B38CAD9B0ABAF /* [CP] Check Pods Manifest.lock */,
 				DC71527923955D6F00924BFA /* Sources */,
 				DC71527A23955D6F00924BFA /* Frameworks */,
 				DC71527B23955D6F00924BFA /* Resources */,
+				B0A705F805F7DE7E69536F00 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -412,6 +478,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		228416DB653B38CAD9B0ABAF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NoOwe-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B0A705F805F7DE7E69536F00 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NoOwe/Pods-NoOwe-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NoOwe/Pods-NoOwe-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NoOwe/Pods-NoOwe-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DC71527923955D6F00924BFA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -438,8 +546,10 @@
 				DC845C6723985165002E0798 /* NightShift.swift in Sources */,
 				DC845C6B2399694D002E0798 /* WebService.swift in Sources */,
 				DC845C6F23996E69002E0798 /* RegisterNewUserViewModel.swift in Sources */,
+				DC1B5EA5239F0375003B312B /* Transaction.swift in Sources */,
 				DC2CD192239ABC1600BD874B /* BudgetListViewModel.swift in Sources */,
 				DC7152D52395B3FE00924BFA /* CoffeeService.swift in Sources */,
+				DC1B5EA3239EEEED003B312B /* ExtensionFunctions.swift in Sources */,
 				DC2CD199239AC02900BD874B /* LoginView.swift in Sources */,
 				DC6F9A6823981CF700D86A45 /* AddCoffeeOrderView.swift in Sources */,
 				DC71528323955D6F00924BFA /* SceneDelegate.swift in Sources */,
@@ -608,19 +718,23 @@
 		};
 		DC7152AB23955D7300924BFA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE513BE6EC47EF9F97637AA6 /* Pods-NoOwe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NoOwe/NoOwe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"NoOwe/Preview Content\"";
 				DEVELOPMENT_TEAM = 26839986X2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NoOwe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Private.NoOwe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -628,19 +742,23 @@
 		};
 		DC7152AC23955D7300924BFA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F33DA388FD3E042505D150D8 /* Pods-NoOwe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NoOwe/NoOwe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"NoOwe/Preview Content\"";
 				DEVELOPMENT_TEAM = 26839986X2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NoOwe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Private.NoOwe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

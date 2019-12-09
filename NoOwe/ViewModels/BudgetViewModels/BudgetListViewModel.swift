@@ -10,7 +10,7 @@ import Foundation
 
 class BudgetListViewModel: ObservableObject {
     
-    @Published var budgets = [BudgetViewModel]()
+    @Published var budgets: [BudgetViewModel] = [BudgetViewModel]()
     
     init(){
         fetchBudgets()
@@ -18,15 +18,19 @@ class BudgetListViewModel: ObservableObject {
     
     func fetchBudgets() {
         
-        WebService().getBudgets { budgets in
-            if let budgets = budgets {
+        WebService().getBudgets { response in
+            switch response {
+                
+            case .success(let budgets):
                 self.budgets = budgets.map(BudgetViewModel.init)
+            case .failure(let error):
+                print("Error " + error.localizedDescription)
             }
         }
     }
 }
 
-class BudgetViewModel {
+class BudgetViewModel: Identifiable {
     
     var budget: Budget
     
@@ -42,11 +46,49 @@ class BudgetViewModel {
         return self.budget.name
     }
     
+    var color: String {
+        return self.budget.color
+    }
+    
     var ownerId: Int {
         return self.budget.owner_id
     }
     
-    var currency: Int {
+    var currencyId: Int {
         return self.budget.currency_id
     }
+    
+    var transactions: [TransactionViewModel] {
+        return self.budget.transactions.map(TransactionViewModel.init)
+    }
 }
+
+class TransactionViewModel: Identifiable {
+    
+    var transaction: Transaction
+    
+    init(transaction: Transaction){
+        self.transaction = transaction
+    }
+    
+    var id: Int {
+        return self.transaction.id
+    }
+    
+    var title: String {
+        return self.transaction.title
+    }
+    
+    var date: Date {
+        return self.transaction.date
+    }
+    
+    var budgetId: Int {
+        return self.transaction.budget_id
+    }
+    
+    var categoryId: Int {
+        return self.transaction.category_id
+    }
+}
+

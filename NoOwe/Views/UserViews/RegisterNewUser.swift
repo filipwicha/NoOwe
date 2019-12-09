@@ -25,26 +25,27 @@ struct RegisterNewUserView: View {
                         footer: Text(self.registerNewUserVM.message)
                     ){
                         SecureField("password", text: self.$registerNewUserVM.password)
-                        SecureField("repeat", text: self.$registerNewUserVM.repeatedPassword)
+                        SecureField("re-enter password", text: self.$registerNewUserVM.repeatedPassword)
                     }
                 }
             }
             
             Button(action: {
-                
                 self.registerUser()
-                
-                if(self.registerNewUserVM.registered) {
-                    self.hideThisModal()
-                }
             }) {
-                Text("Register")
+                self.registerNewUserVM.registrationCompleated ? Text("Ok") : Text("Register")
             }
         }
     }
     
     func registerUser(){
         self.registerNewUserVM.registerUser()
+        
+        self.showModal.wrappedValue.dismiss()
+        
+        if(self.registerNewUserVM.registrationCompleated) {
+            self.hideThisModal()
+        }
     }
     
     func hideThisModal(){

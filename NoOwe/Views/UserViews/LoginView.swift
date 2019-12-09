@@ -10,38 +10,49 @@ import SwiftUI
 
 struct LoginView: View {
     
+    @ObservedObject private var loginUserViewModel: LoginUserViewModel = LoginUserViewModel()
     @State private var showModal: Bool = false
-    @ObservedObject private var loginUserViewModel = LoginUserViewModel()
     
     var body: some View {
-        VStack {
-            Form {
-                Section(header: Text("Enter email address")) {
-                    TextField("email@email.com", text: self.$loginUserViewModel.email)
-                }
-                Section(header: Text("Enter password"), footer: Text(self.loginUserViewModel.message)
-                ){
-                    SecureField("password", text: self.$loginUserViewModel.password)
-                }
-            }
-            
-            Button(action: {
-                self.loginUser()
-            }, label: {
-                Text("Login")
-                
-            })
-            
-            Button(action: {
-                self.showRegistrationModal()
-            }) {
-                Text("Register!")
-            }
+        ViewConditionedByLogin()
+    }
     
-            .sheet(isPresented: self.$showModal){
-                RegisterNewUserView()
-            }
-        }.navigationBarTitle("Coffee Orders")
+    func ViewConditionedByLogin() -> AnyView {
+        if self.loginUserViewModel.loginCompleated {
+            return AnyView(BudgetListView())
+        } else {
+            return AnyView(
+                VStack{
+                    Form {
+                        
+                        Section(header: Text("Enter email address")) {
+                            TextField("email@email.com", text: self.$loginUserViewModel.email)
+                        }
+                        
+                        Section(header: Text("Enter password"), footer: Text(self.loginUserViewModel.message)
+                        ){
+                            SecureField("password", text: self.$loginUserViewModel.password)
+                        }
+                    }
+                    
+                    Button(action: {
+                        self.loginUser()
+                    }, label: {
+                        Text("Login")
+                    })
+                    
+                    Button(action: {
+                        self.showRegistrationModal()
+                    }) {
+                        Text("Register!")
+                    }
+                        
+                    .sheet(isPresented: self.$showModal){
+                        RegisterNewUserView()
+                    }
+                }
+            )
+        }
     }
     
     func showRegistrationModal(){
@@ -58,3 +69,4 @@ struct LoginView_Previews: PreviewProvider {
         LoginView()
     }
 }
+
