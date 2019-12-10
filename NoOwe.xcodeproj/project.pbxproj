@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4CE4BE4ED7D7FD4454626603 /* Pods_NoOwe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2D8EB55DF1B7CEF547CB4F /* Pods_NoOwe.framework */; };
+		0F842605433440996FA8DADD /* Pods_NoOwe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69760194B214484358D5233C /* Pods_NoOwe.framework */; };
 		DC1247042398258D007C0328 /* OrderTotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1247032398258D007C0328 /* OrderTotalView.swift */; };
 		DC1B5EA3239EEEED003B312B /* ExtensionFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1B5EA2239EEEED003B312B /* ExtensionFunctions.swift */; };
 		DC1B5EA5239F0375003B312B /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1B5EA4239F0375003B312B /* Transaction.swift */; };
@@ -64,8 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CB2D8EB55DF1B7CEF547CB4F /* Pods_NoOwe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoOwe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE513BE6EC47EF9F97637AA6 /* Pods-NoOwe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoOwe.debug.xcconfig"; path = "Target Support Files/Pods-NoOwe/Pods-NoOwe.debug.xcconfig"; sourceTree = "<group>"; };
+		69760194B214484358D5233C /* Pods_NoOwe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoOwe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EDD324847487B0E73B013CD /* Pods-NoOwe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoOwe.release.xcconfig"; path = "Target Support Files/Pods-NoOwe/Pods-NoOwe.release.xcconfig"; sourceTree = "<group>"; };
 		DC1247032398258D007C0328 /* OrderTotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTotalView.swift; sourceTree = "<group>"; };
 		DC1B5EA2239EEEED003B312B /* ExtensionFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionFunctions.swift; sourceTree = "<group>"; };
 		DC1B5EA4239F0375003B312B /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 		DC845C6A2399694D002E0798 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		DC845C6E23996E69002E0798 /* RegisterNewUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNewUserViewModel.swift; sourceTree = "<group>"; };
 		DC845C73239970C8002E0798 /* RegisterNewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNewUser.swift; sourceTree = "<group>"; };
-		F33DA388FD3E042505D150D8 /* Pods-NoOwe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoOwe.release.xcconfig"; path = "Target Support Files/Pods-NoOwe/Pods-NoOwe.release.xcconfig"; sourceTree = "<group>"; };
+		EE7EBE6E8A556E3528797EE5 /* Pods-NoOwe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoOwe.debug.xcconfig"; path = "Target Support Files/Pods-NoOwe/Pods-NoOwe.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CE4BE4ED7D7FD4454626603 /* Pods_NoOwe.framework in Frameworks */,
+				0F842605433440996FA8DADD /* Pods_NoOwe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,19 +138,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5E3203BA1A1D5F582BDE2685 /* Frameworks */ = {
+		5296E753E822DF84D6AF6799 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CB2D8EB55DF1B7CEF547CB4F /* Pods_NoOwe.framework */,
+				69760194B214484358D5233C /* Pods_NoOwe.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		ACF90BA4C6F7D4F4651C8984 /* Pods */ = {
+		53F6657C62608BE3032838E0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CE513BE6EC47EF9F97637AA6 /* Pods-NoOwe.debug.xcconfig */,
-				F33DA388FD3E042505D150D8 /* Pods-NoOwe.release.xcconfig */,
+				EE7EBE6E8A556E3528797EE5 /* Pods-NoOwe.debug.xcconfig */,
+				8EDD324847487B0E73B013CD /* Pods-NoOwe.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -206,8 +206,8 @@
 				DC71529923955D7300924BFA /* NoOweTests */,
 				DC7152A423955D7300924BFA /* NoOweUITests */,
 				DC71527E23955D6F00924BFA /* Products */,
-				ACF90BA4C6F7D4F4651C8984 /* Pods */,
-				5E3203BA1A1D5F582BDE2685 /* Frameworks */,
+				53F6657C62608BE3032838E0 /* Pods */,
+				5296E753E822DF84D6AF6799 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -718,7 +718,7 @@
 		};
 		DC7152AB23955D7300924BFA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE513BE6EC47EF9F97637AA6 /* Pods-NoOwe.debug.xcconfig */;
+			baseConfigurationReference = EE7EBE6E8A556E3528797EE5 /* Pods-NoOwe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NoOwe/NoOwe.entitlements;
@@ -742,7 +742,7 @@
 		};
 		DC7152AC23955D7300924BFA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F33DA388FD3E042505D150D8 /* Pods-NoOwe.release.xcconfig */;
+			baseConfigurationReference = 8EDD324847487B0E73B013CD /* Pods-NoOwe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NoOwe/NoOwe.entitlements;
