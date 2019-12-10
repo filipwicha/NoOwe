@@ -53,6 +53,34 @@ class WebService {
         }.resume()
     }
     
+    func createNewBudget(newBudget: NewBudget, completion: @escaping (Result<String, Error>) -> ()) {
+        
+        guard let url = URL(string: baseURL + "/budget") else {
+            fatalError("Invalid URL")
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONEncoder().encode(newBudget)
+        request.addValue(getToken(), forHTTPHeaderField: "x-access-token")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            guard let _ = data, error == nil else {
+                DispatchQueue.main.async {
+                    completion(.failure(error!))
+                    print("Error getting data" + error!.localizedDescription )
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                completion(.success("New budget added correctly"))
+            }
+        }.resume()
+    }
+    
     func login(user: User, completion: @escaping (Result<LoginResponse, Error>) -> ()) {
         
         guard let url = URL(string: baseURL + "/auth/signin") else {
@@ -123,6 +151,41 @@ class WebService {
             DispatchQueue.main.async {
                 do {
                     let response = try self.jsonDecoder.decode([Budget].self, from: data)
+                    completion(.success(response))
+                    print("Got budgets correctly" )
+                } catch let error {
+                    completion(.failure(error))
+                    print("Error parsing json to budget model" )
+                    
+                    return
+                }
+            }
+        }.resume()
+    }
+    
+    func getCurrencies(completion: @escaping (Result<[Currency], Error>) -> ()){
+        guard let url = URL(string: baseURL + "/currencies") else {
+            //completion(.failure(fatalError("Wrong url")))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue(getToken(), forHTTPHeaderField: "x-access-token")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            guard let data = data, error == nil else {
+                DispatchQueue.main.async {
+                    completion(.failure(error!))
+                    print("Error getting data" + error!.localizedDescription )
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                do {
+                    let response = try self.jsonDecoder.decode([Currency].self, from: data)
                     completion(.success(response))
                     print("Got budgets correctly" )
                 } catch let error {

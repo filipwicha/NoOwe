@@ -10,6 +10,7 @@ import SwiftUI
 
 struct BudgetListView: View {
     @ObservedObject var budgetListViewModel: BudgetListViewModel = BudgetListViewModel()
+    @State private var showModal: Bool = false
     
     init(){
         budgetListViewModel.fetchBudgets()
@@ -18,34 +19,40 @@ struct BudgetListView: View {
     var body: some View {
         NavigationView{
             List{
-//
-//                GeometryReader { g -> Text in
-//                    let frame = g.frame(in: CoordinateSpace.global)
-//
-//                    if frame.origin.y > 250 {
-//                        self.budgetListViewModel.fetchBudgets()
-//                        return Text("♾")
-//                    } else {
-//                        return Text("↑")
-//                    }
-//                }
-//
-//
                 
                 ForEach(self.budgetListViewModel.budgets){ budget in
                     Text(budget.name)
                 }
+                
+                Button(action:{
+                    self.showNewBudgetModal()
+                }){
+                    HStack{
+                        Spacer()
+                        Image(systemName: "plus")
+                        Spacer()
+                        
+                    }
+                }
             }
                 
             .navigationBarTitle("Budgets")
-        .navigationBarItems(trailing:
-            Button(action:{
-                self.budgetListViewModel.fetchBudgets()
-            }){
-                Image(systemName: "arrow.clockwise")
-            }
-        )
+            .navigationBarItems(trailing:
+                Button(action:{
+                    self.budgetListViewModel.fetchBudgets()
+                }){
+                    Image(systemName: "arrow.clockwise")
+                }
+            )
+        }.sheet(isPresented: self.$showModal,
+                onDismiss: { self.budgetListViewModel.fetchBudgets() }
+        ){
+            CreateNewBudgetView()
         }
+    }
+    
+    func showNewBudgetModal(){
+        self.showModal = true
     }
 }
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0F842605433440996FA8DADD /* Pods_NoOwe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69760194B214484358D5233C /* Pods_NoOwe.framework */; };
 		DC1247042398258D007C0328 /* OrderTotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1247032398258D007C0328 /* OrderTotalView.swift */; };
+		DC1495E723A020A500E11078 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1495E623A020A500E11078 /* Currency.swift */; };
 		DC1B5EA3239EEEED003B312B /* ExtensionFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1B5EA2239EEEED003B312B /* ExtensionFunctions.swift */; };
 		DC1B5EA5239F0375003B312B /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1B5EA4239F0375003B312B /* Transaction.swift */; };
 		DC2CD18B2399B1CC00BD874B /* LoginUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CD18A2399B1CC00BD874B /* LoginUserViewModel.swift */; };
@@ -43,7 +44,11 @@
 		DC845C6923996877002E0798 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC845C6823996877002E0798 /* User.swift */; };
 		DC845C6B2399694D002E0798 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC845C6A2399694D002E0798 /* WebService.swift */; };
 		DC845C6F23996E69002E0798 /* RegisterNewUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC845C6E23996E69002E0798 /* RegisterNewUserViewModel.swift */; };
-		DC845C74239970C8002E0798 /* RegisterNewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC845C73239970C8002E0798 /* RegisterNewUser.swift */; };
+		DC845C74239970C8002E0798 /* RegisterNewUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC845C73239970C8002E0798 /* RegisterNewUserView.swift */; };
+		DC8947ED239FEA9800D02472 /* CreateNewBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8947EC239FEA9800D02472 /* CreateNewBudgetView.swift */; };
+		DC8947EF239FEB4B00D02472 /* NewBudgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8947EE239FEB4B00D02472 /* NewBudgetViewModel.swift */; };
+		DC8947F3239FED4B00D02472 /* BudgetMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8947F2239FED4B00D02472 /* BudgetMember.swift */; };
+		DC8947F5239FEDF300D02472 /* NewBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8947F4239FEDF300D02472 /* NewBudget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +72,7 @@
 		69760194B214484358D5233C /* Pods_NoOwe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoOwe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EDD324847487B0E73B013CD /* Pods-NoOwe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoOwe.release.xcconfig"; path = "Target Support Files/Pods-NoOwe/Pods-NoOwe.release.xcconfig"; sourceTree = "<group>"; };
 		DC1247032398258D007C0328 /* OrderTotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTotalView.swift; sourceTree = "<group>"; };
+		DC1495E623A020A500E11078 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		DC1B5EA2239EEEED003B312B /* ExtensionFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionFunctions.swift; sourceTree = "<group>"; };
 		DC1B5EA4239F0375003B312B /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		DC2CD18A2399B1CC00BD874B /* LoginUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserViewModel.swift; sourceTree = "<group>"; };
@@ -108,7 +114,11 @@
 		DC845C6823996877002E0798 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DC845C6A2399694D002E0798 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		DC845C6E23996E69002E0798 /* RegisterNewUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNewUserViewModel.swift; sourceTree = "<group>"; };
-		DC845C73239970C8002E0798 /* RegisterNewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNewUser.swift; sourceTree = "<group>"; };
+		DC845C73239970C8002E0798 /* RegisterNewUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNewUserView.swift; sourceTree = "<group>"; };
+		DC8947EC239FEA9800D02472 /* CreateNewBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewBudgetView.swift; sourceTree = "<group>"; };
+		DC8947EE239FEB4B00D02472 /* NewBudgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBudgetViewModel.swift; sourceTree = "<group>"; };
+		DC8947F2239FED4B00D02472 /* BudgetMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetMember.swift; sourceTree = "<group>"; };
+		DC8947F4239FEDF300D02472 /* NewBudget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBudget.swift; sourceTree = "<group>"; };
 		EE7EBE6E8A556E3528797EE5 /* Pods-NoOwe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoOwe.debug.xcconfig"; path = "Target Support Files/Pods-NoOwe/Pods-NoOwe.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				DC2CD191239ABC1600BD874B /* BudgetListViewModel.swift */,
+				DC8947EE239FEB4B00D02472 /* NewBudgetViewModel.swift */,
 			);
 			path = BudgetViewModels;
 			sourceTree = "<group>";
@@ -174,7 +185,7 @@
 		DC2CD197239ABFB400BD874B /* UserViews */ = {
 			isa = PBXGroup;
 			children = (
-				DC845C73239970C8002E0798 /* RegisterNewUser.swift */,
+				DC845C73239970C8002E0798 /* RegisterNewUserView.swift */,
 				DC2CD198239AC02900BD874B /* LoginView.swift */,
 			);
 			path = UserViews;
@@ -184,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				DC2CD19C239AC28200BD874B /* BudgetListView.swift */,
+				DC8947EC239FEA9800D02472 /* CreateNewBudgetView.swift */,
 			);
 			path = BudgetViews;
 			sourceTree = "<group>";
@@ -276,6 +288,9 @@
 				DC2CD195239ABD5D00BD874B /* Budget.swift */,
 				DCD7CEA2239C19C700BF3EA4 /* Old */,
 				DC1B5EA4239F0375003B312B /* Transaction.swift */,
+				DC8947F2239FED4B00D02472 /* BudgetMember.swift */,
+				DC8947F4239FEDF300D02472 /* NewBudget.swift */,
+				DC1495E623A020A500E11078 /* Currency.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -525,18 +540,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC1495E723A020A500E11078 /* Currency.swift in Sources */,
 				DC71528123955D6F00924BFA /* AppDelegate.swift in Sources */,
 				DC4C2595239701CC0062D705 /* OrderListView.swift in Sources */,
+				DC8947F5239FEDF300D02472 /* NewBudget.swift in Sources */,
 				DC7152D32395B26A00924BFA /* Order.swift in Sources */,
 				DC2CD19D239AC28200BD874B /* BudgetListView.swift in Sources */,
 				DC4C25922396FF570062D705 /* OrderListViewModel.swift in Sources */,
 				DC7152C323958A3F00924BFA /* FancyTimer.swift in Sources */,
 				DC2CD196239ABD5D00BD874B /* Budget.swift in Sources */,
 				DC7152C523958C8400924BFA /* UserSettings.swift in Sources */,
+				DC8947ED239FEA9800D02472 /* CreateNewBudgetView.swift in Sources */,
 				DC7152BD2395774C00924BFA /* Array+Extensions.swift in Sources */,
 				DC2CD18B2399B1CC00BD874B /* LoginUserViewModel.swift in Sources */,
 				DC1247042398258D007C0328 /* OrderTotalView.swift in Sources */,
-				DC845C74239970C8002E0798 /* RegisterNewUser.swift in Sources */,
+				DC845C74239970C8002E0798 /* RegisterNewUserView.swift in Sources */,
 				DC7152C723958DD600924BFA /* FancyScoreView.swift in Sources */,
 				DC6F9A622397111900D86A45 /* CreateOrderResponse.swift in Sources */,
 				DC71528623955D6F00924BFA /* NoOwe.xcdatamodeld in Sources */,
@@ -544,6 +562,7 @@
 				DC2CD18F239AACE300BD874B /* LoginResponse.swift in Sources */,
 				DC6F9A662397137C00D86A45 /* CoffeeViewModel.swift in Sources */,
 				DC845C6723985165002E0798 /* NightShift.swift in Sources */,
+				DC8947EF239FEB4B00D02472 /* NewBudgetViewModel.swift in Sources */,
 				DC845C6B2399694D002E0798 /* WebService.swift in Sources */,
 				DC845C6F23996E69002E0798 /* RegisterNewUserViewModel.swift in Sources */,
 				DC1B5EA5239F0375003B312B /* Transaction.swift in Sources */,
@@ -554,6 +573,7 @@
 				DC6F9A6823981CF700D86A45 /* AddCoffeeOrderView.swift in Sources */,
 				DC71528323955D6F00924BFA /* SceneDelegate.swift in Sources */,
 				DC845C6923996877002E0798 /* User.swift in Sources */,
+				DC8947F3239FED4B00D02472 /* BudgetMember.swift in Sources */,
 				DC6F9A6A23981FFC00D86A45 /* AddCoffeeOrderViewModel.swift in Sources */,
 				DC7152D12395B07300924BFA /* Coffee.swift in Sources */,
 			);
