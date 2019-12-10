@@ -39,7 +39,8 @@ class NewBudgetViewModel: ObservableObject {
             currency_id: self.currencyId,
             budget_members:  self.budgetMembers.map({ (member) -> String in
                 return member.name
-        }))) { response in
+        })))
+        { response in
             
             switch response {
             case .success(let message):

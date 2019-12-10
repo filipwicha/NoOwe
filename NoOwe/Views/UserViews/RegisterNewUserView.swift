@@ -33,7 +33,7 @@ struct RegisterNewUserView: View {
             Button(action: {
                 self.registerUser()
             }) {
-                self.registerNewUserVM.registrationCompleated ? Text("Ok") : Text("Register")
+                self.registerNewUserVM.registrationCompleated ? Text("Login") : Text("Register")
             }
         }
     }
@@ -41,7 +41,7 @@ struct RegisterNewUserView: View {
     func registerUser(){
         self.registerNewUserVM.registerUser()
         
-        self.showModal.wrappedValue.dismiss()
+        // self.showModal.wrappedValue.dismiss()
         
         if(self.registerNewUserVM.registrationCompleated) {
             self.hideThisModal()

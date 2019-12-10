@@ -60,7 +60,7 @@ struct CreateNewBudgetView: View {
             Button(action: {
                 self.createBudget()
             }) {
-                self.newBudgetVM.creationCompleated ? Text("Ok") : Text("Register")
+                self.newBudgetVM.creationCompleated ? Text("See budgets") : Text("Create")
             }
         }
     }
@@ -68,7 +68,7 @@ struct CreateNewBudgetView: View {
     func createBudget(){
         self.newBudgetVM.addNewBudget()
         
-        self.showModal.wrappedValue.dismiss()
+        //self.showModal.wrappedValue.dismiss()
         
         if(self.newBudgetVM.creationCompleated) {
             self.hideThisModal()
