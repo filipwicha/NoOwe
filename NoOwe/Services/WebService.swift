@@ -10,7 +10,7 @@ import Foundation
 import SwiftKeychainWrapper
 
 class WebService {
-    let baseURL: String = "https://noowe.herokuapp.com"
+    let baseURL: String = "https:noowe.herokuapp.com"
     
     init(){
 
@@ -152,7 +152,42 @@ class WebService {
                 do {
                     let response = try self.jsonDecoder.decode([Budget].self, from: data)
                     completion(.success(response))
-                    print("Got budgets correctly" )
+                    print("Got budgets correctly \(self.getId())" )
+                } catch let error {
+                    completion(.failure(error))
+                    print("Error parsing json to budget model" )
+                    
+                    return
+                }
+            }
+        }.resume()
+    }
+    
+    func getTransactions(budgetId: Int, completion: @escaping (Result<[Transaction], Error>) -> ()){
+        guard let url = URL(string: baseURL + "/transactions/\(budgetId)") else {
+            //completion(.failure(fatalError("Wrong url")))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue(getToken(), forHTTPHeaderField: "x-access-token")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            guard let data = data, error == nil else {
+                DispatchQueue.main.async {
+                    completion(.failure(error!))
+                    print("Error getting data" + error!.localizedDescription )
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                do {
+                    let response = try self.jsonDecoder.decode([Transaction].self, from: data)
+                    completion(.success(response))
+                    print("Got transactions correctly \(self.getId())" )
                 } catch let error {
                     completion(.failure(error))
                     print("Error parsing json to budget model" )
@@ -221,5 +256,10 @@ class WebService {
             return jwtToken
         }
     }
+    
+    func getId() -> Int{
+        return Int.random(in: 0 ..< 10)
+    }
 }
+
 

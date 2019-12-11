@@ -19,23 +19,40 @@ struct CreateNewBudgetView: View {
                     Section(header: Text("Enter name of the budget")) {
                         TextField("'Home budget', 'Journey' ...", text: self.$newBudgetVM.name)
                     }
-
+                    
                     Section(
                         header: Text("Choose color")
                     ){
-                        TextField("1212121", text: self.$newBudgetVM.color)
+                        Picker(selection: self.$newBudgetVM.color, label: Text("Color")) {
+                            ForEach(0 ..< self.newBudgetVM.colors.count) {
+                                Image(systemName: "square.fill")
+                                    .foregroundColor(self.getColor(colorString: self.newBudgetVM.colors[$0]))
+                                    //.tag(self.colors[$0])
+                            }
+                        }
                     }
 
+                    Section(
+                        header: Text("Choose currency"),
+                        footer: Text(self.newBudgetVM.message)
+                    ){
+                        Picker(selection: self.$newBudgetVM.currencyId, label: Text("Currency")) {
+                            ForEach(self.newBudgetVM.currencies.indices, id:\.self) { index in
+                                Text(self.newBudgetVM.currencies[index].code).tag(self.newBudgetVM.currencies[index].id)
+                            }
+                        }.pickerStyle(SegmentedPickerStyle())
+                    }
+                    
                     Section(
                         header: Text("Add budget members")
                     ){
                         List{
                             Text("Me")
-
+                            
                             ForEach(self.newBudgetVM.budgetMembers, id:\.id) { member in
                                 TextField("\(member.id + 2)'s user nickname", text: self.$newBudgetVM.budgetMembers[member.id].name)
                             }
-
+                            
                             Button(action: {
                                 self.newBudgetVM.addNewBudgetMember()
                             }) {
@@ -44,16 +61,7 @@ struct CreateNewBudgetView: View {
                         }
                     }
                     
-                    Section(
-                        header: Text("Choose currency"),
-                        footer: Text(self.newBudgetVM.message)
-                    ){
-                        Picker(selection: self.$newBudgetVM.currencyId, label: Text("Strength")) {
-                            ForEach(self.newBudgetVM.currencies.indices, id:\.self) { index in
-                                Text(self.newBudgetVM.currencies[index].code).tag(self.newBudgetVM.currencies[index].id)
-                            }
-                        }.pickerStyle(SegmentedPickerStyle())
-                    }
+                    
                 }
             }
             
@@ -65,13 +73,25 @@ struct CreateNewBudgetView: View {
         }
     }
     
+    func getColor(colorString: String) -> Color {
+        let hueArray: [String] = colorString.components(separatedBy: ",")
+        let full = Double(255)
+        
+        let r = Double(hueArray[0])!/full
+        let g = Double(hueArray[1])!/full
+        let b = Double(hueArray[2])!/full
+        
+        return Color(red: r, green: g, blue: b)
+    }
+    
     func createBudget(){
-        self.newBudgetVM.addNewBudget()
         
         //self.showModal.wrappedValue.dismiss()
         
         if(self.newBudgetVM.creationCompleated) {
             self.hideThisModal()
+        } else {
+            self.newBudgetVM.addNewBudget()
         }
     }
     

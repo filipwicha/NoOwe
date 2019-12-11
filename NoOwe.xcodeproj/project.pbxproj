@@ -48,7 +48,10 @@
 		DC8947ED239FEA9800D02472 /* CreateNewBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8947EC239FEA9800D02472 /* CreateNewBudgetView.swift */; };
 		DC8947EF239FEB4B00D02472 /* NewBudgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8947EE239FEB4B00D02472 /* NewBudgetViewModel.swift */; };
 		DC8947F3239FED4B00D02472 /* BudgetMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8947F2239FED4B00D02472 /* BudgetMember.swift */; };
-		DC8947F5239FEDF300D02472 /* NewBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8947F4239FEDF300D02472 /* NewBudget.swift */; };
+		DC950CD823A165F100324A3D /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC950CD723A165F100324A3D /* TransactionListView.swift */; };
+		DC950CDA23A16A1300324A3D /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC950CD923A16A1300324A3D /* Share.swift */; };
+		DC950CDC23A16BE200324A3D /* NewBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC950CDB23A16BE200324A3D /* NewBudget.swift */; };
+		DC950CDE23A16D2C00324A3D /* TransactionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC950CDD23A16D2C00324A3D /* TransactionListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,7 +121,10 @@
 		DC8947EC239FEA9800D02472 /* CreateNewBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewBudgetView.swift; sourceTree = "<group>"; };
 		DC8947EE239FEB4B00D02472 /* NewBudgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBudgetViewModel.swift; sourceTree = "<group>"; };
 		DC8947F2239FED4B00D02472 /* BudgetMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetMember.swift; sourceTree = "<group>"; };
-		DC8947F4239FEDF300D02472 /* NewBudget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBudget.swift; sourceTree = "<group>"; };
+		DC950CD723A165F100324A3D /* TransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
+		DC950CD923A16A1300324A3D /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
+		DC950CDB23A16BE200324A3D /* NewBudget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewBudget.swift; sourceTree = "<group>"; };
+		DC950CDD23A16D2C00324A3D /* TransactionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewModel.swift; sourceTree = "<group>"; };
 		EE7EBE6E8A556E3528797EE5 /* Pods-NoOwe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoOwe.debug.xcconfig"; path = "Target Support Files/Pods-NoOwe/Pods-NoOwe.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -204,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				DCD7CEA0239C19A100BF3EA4 /* Old */,
+				DC950CE023A16FE500324A3D /* TransactionViews */,
 				DC2CD19B239AC24E00BD874B /* BudgetViews */,
 				DC2CD197239ABFB400BD874B /* UserViews */,
 				DC71528723955D6F00924BFA /* ContentView.swift */,
@@ -236,9 +243,9 @@
 		DC71527F23955D6F00924BFA /* NoOwe */ = {
 			isa = PBXGroup;
 			children = (
-				DC1B5EA1239EEED9003B312B /* Extensions */,
 				DC423341239EA7C500620541 /* NoOwe.entitlements */,
 				DCD7CEA3239C19DF00BF3EA4 /* Old */,
+				DC1B5EA1239EEED9003B312B /* Extensions */,
 				DC4C2593239701980062D705 /* Views */,
 				DC7152CD2395A85F00924BFA /* ViewModels */,
 				DC7152CA2395A5C400924BFA /* Services */,
@@ -283,14 +290,15 @@
 		DC7152B32395663B00924BFA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DC950CDB23A16BE200324A3D /* NewBudget.swift */,
 				DC2CD18E239AACE300BD874B /* LoginResponse.swift */,
 				DC845C6823996877002E0798 /* User.swift */,
 				DC2CD195239ABD5D00BD874B /* Budget.swift */,
 				DCD7CEA2239C19C700BF3EA4 /* Old */,
 				DC1B5EA4239F0375003B312B /* Transaction.swift */,
 				DC8947F2239FED4B00D02472 /* BudgetMember.swift */,
-				DC8947F4239FEDF300D02472 /* NewBudget.swift */,
 				DC1495E623A020A500E11078 /* Currency.swift */,
+				DC950CD923A16A1300324A3D /* Share.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -308,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				DCD7CEA1239C19B600BF3EA4 /* Old */,
+				DC950CE323A1703800324A3D /* TransactionViewModels */,
 				DC2CD190239ABBF900BD874B /* BudgetViewModels */,
 				DC845C702399702B002E0798 /* UserViewModels */,
 			);
@@ -321,6 +330,22 @@
 				DC2CD18A2399B1CC00BD874B /* LoginUserViewModel.swift */,
 			);
 			path = UserViewModels;
+			sourceTree = "<group>";
+		};
+		DC950CE023A16FE500324A3D /* TransactionViews */ = {
+			isa = PBXGroup;
+			children = (
+				DC950CD723A165F100324A3D /* TransactionListView.swift */,
+			);
+			path = TransactionViews;
+			sourceTree = "<group>";
+		};
+		DC950CE323A1703800324A3D /* TransactionViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DC950CDD23A16D2C00324A3D /* TransactionListViewModel.swift */,
+			);
+			path = TransactionViewModels;
 			sourceTree = "<group>";
 		};
 		DCD7CEA0239C19A100BF3EA4 /* Old */ = {
@@ -543,11 +568,12 @@
 				DC1495E723A020A500E11078 /* Currency.swift in Sources */,
 				DC71528123955D6F00924BFA /* AppDelegate.swift in Sources */,
 				DC4C2595239701CC0062D705 /* OrderListView.swift in Sources */,
-				DC8947F5239FEDF300D02472 /* NewBudget.swift in Sources */,
 				DC7152D32395B26A00924BFA /* Order.swift in Sources */,
 				DC2CD19D239AC28200BD874B /* BudgetListView.swift in Sources */,
 				DC4C25922396FF570062D705 /* OrderListViewModel.swift in Sources */,
 				DC7152C323958A3F00924BFA /* FancyTimer.swift in Sources */,
+				DC950CDA23A16A1300324A3D /* Share.swift in Sources */,
+				DC950CDE23A16D2C00324A3D /* TransactionListViewModel.swift in Sources */,
 				DC2CD196239ABD5D00BD874B /* Budget.swift in Sources */,
 				DC7152C523958C8400924BFA /* UserSettings.swift in Sources */,
 				DC8947ED239FEA9800D02472 /* CreateNewBudgetView.swift in Sources */,
@@ -560,6 +586,7 @@
 				DC71528623955D6F00924BFA /* NoOwe.xcdatamodeld in Sources */,
 				DC71528823955D7000924BFA /* ContentView.swift in Sources */,
 				DC2CD18F239AACE300BD874B /* LoginResponse.swift in Sources */,
+				DC950CD823A165F100324A3D /* TransactionListView.swift in Sources */,
 				DC6F9A662397137C00D86A45 /* CoffeeViewModel.swift in Sources */,
 				DC845C6723985165002E0798 /* NightShift.swift in Sources */,
 				DC8947EF239FEB4B00D02472 /* NewBudgetViewModel.swift in Sources */,
@@ -570,6 +597,7 @@
 				DC7152D52395B3FE00924BFA /* CoffeeService.swift in Sources */,
 				DC1B5EA3239EEEED003B312B /* ExtensionFunctions.swift in Sources */,
 				DC2CD199239AC02900BD874B /* LoginView.swift in Sources */,
+				DC950CDC23A16BE200324A3D /* NewBudget.swift in Sources */,
 				DC6F9A6823981CF700D86A45 /* AddCoffeeOrderView.swift in Sources */,
 				DC71528323955D6F00924BFA /* SceneDelegate.swift in Sources */,
 				DC845C6923996877002E0798 /* User.swift in Sources */,

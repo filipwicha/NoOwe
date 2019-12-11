@@ -15,4 +15,5 @@ struct Transaction: Codable, Identifiable {
     let date: Date
     let budget_id: Int
     let category_id: Int
+    let shares: [Share]
 }

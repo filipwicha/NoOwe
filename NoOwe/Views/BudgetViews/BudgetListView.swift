@@ -18,10 +18,10 @@ struct BudgetListView: View {
     
     var body: some View {
         NavigationView{
-            List{
-                
-                ForEach(self.budgetListViewModel.budgets){ budget in
+            List{ ForEach(self.budgetListViewModel.budgets){ budget in
+                NavigationLink(destination: TransactionListView(budget: budget)){
                     Text(budget.name)
+                }
                 }
                 
                 Button(action:{
@@ -41,7 +41,7 @@ struct BudgetListView: View {
                 Button(action:{
                     self.budgetListViewModel.fetchBudgets()
                 }){
-                    Image(systemName: "arrow.clockwise")
+                    Image(systemName: "arrow.clockwise").foregroundColor(Color.white)
                 }
             )
         }.sheet(isPresented: self.$showModal,

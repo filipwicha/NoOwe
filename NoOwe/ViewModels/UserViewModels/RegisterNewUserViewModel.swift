@@ -23,7 +23,7 @@ class RegisterNewUserViewModel: ObservableObject {
         self.webService = WebService()
     }
     
-    func registerUser(){
+    func registerUser() {
         validated = checkCredentials(email: self.email, password: self.password, repeatedPassword: self.repeatedPassword)
         
         if validated {
@@ -40,7 +40,6 @@ class RegisterNewUserViewModel: ObservableObject {
                     self.message = error.localizedDescription
                 }
             }
-
         } else {
             print("Wrong credentials")
         }

@@ -39,12 +39,11 @@ struct RegisterNewUserView: View {
     }
     
     func registerUser(){
-        self.registerNewUserVM.registerUser()
-        
-        // self.showModal.wrappedValue.dismiss()
         
         if(self.registerNewUserVM.registrationCompleated) {
             self.hideThisModal()
+        } else {
+            self.registerNewUserVM.registerUser()
         }
     }
     

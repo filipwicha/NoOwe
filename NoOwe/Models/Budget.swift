@@ -15,5 +15,4 @@ struct Budget: Codable, Identifiable {
     let color: String
     let owner_id: Int
     let currency_id: Int
-    let transactions: [Transaction]
 }

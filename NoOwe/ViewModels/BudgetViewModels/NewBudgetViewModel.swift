@@ -16,6 +16,7 @@ class NewBudgetViewModel: ObservableObject {
     @Published var numberOfMembers: Int = 0
     @Published var budgetMembers: [Nickname] = []
     @Published var currencies: [CurrencyViewModel] = []
+    @Published var colors: [String] = ["107,69,69","107,104,69","79,107,69","69,107,92","69,96,107","71,69,107","95,69,107","107,69,90","115,115,115"]
     
     @Published var message = "Fill the form to create new budget"
     @Published var creationCompleated = false
@@ -25,27 +26,27 @@ class NewBudgetViewModel: ObservableObject {
     init() {
         self.webService = WebService()
         self.fetchCurrencies()
+        self.color = self.colors[0]
     }
     
     func addNewBudgetMember(){
         self.budgetMembers.append(Nickname(id: self.budgetMembers.count, name: ""))
     }
     
-    func addNewBudget(){
-        
+    func addNewBudget() {
         self.webService.createNewBudget(newBudget: NewBudget(
             name: self.name,
             color: self.color,
             currency_id: self.currencyId,
             budget_members:  self.budgetMembers.map({ (member) -> String in
                 return member.name
-        })))
+            })))
         { response in
-            
             switch response {
             case .success(let message):
                 self.message = message
                 self.creationCompleated = true
+                
             case .failure(let error):
                 self.message = error.localizedDescription
             }
@@ -53,17 +54,17 @@ class NewBudgetViewModel: ObservableObject {
     }
     
     func fetchCurrencies(){
-           
-           WebService().getCurrencies { response in
-               switch response {
-                   
-               case .success(let currencies):
-                   self.currencies = currencies.map(CurrencyViewModel.init)
-               case .failure(let error):
-                   print("Error " + error.localizedDescription)
-               }
-           }
-       }
+        
+        WebService().getCurrencies { response in
+            switch response {
+                
+            case .success(let currencies):
+                self.currencies = currencies.map(CurrencyViewModel.init)
+            case .failure(let error):
+                print("Error " + error.localizedDescription)
+            }
+        }
+    }
     
     struct Nickname: Identifiable {
         var id: Int
