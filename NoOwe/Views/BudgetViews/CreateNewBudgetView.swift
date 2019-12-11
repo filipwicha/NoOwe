@@ -23,7 +23,9 @@ struct CreateNewBudgetView: View {
                     Section(
                         header: Text("Choose color")
                     ){
-                        Picker(selection: self.$newBudgetVM.color, label: Text("Color")) {
+                        Picker(selection: self.$newBudgetVM.color,
+                               label: Image(systemName: "square.fill").foregroundColor(self.getColor(colorString: self.newBudgetVM.color)))
+                        {
                             ForEach(0 ..< self.newBudgetVM.colors.count) {
                                 Image(systemName: "square.fill")
                                     .foregroundColor(self.getColor(colorString: self.newBudgetVM.colors[$0]))
