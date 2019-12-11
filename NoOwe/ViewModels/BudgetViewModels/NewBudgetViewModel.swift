@@ -26,7 +26,7 @@ class NewBudgetViewModel: ObservableObject {
     init() {
         self.webService = WebService()
         self.fetchCurrencies()
-        self.color = self.colors[0]
+        self.color = self.colors[Int.random(in: 0 ..< colors.count)]
     }
     
     func addNewBudgetMember(){
