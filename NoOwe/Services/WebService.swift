@@ -198,6 +198,42 @@ class WebService {
         }.resume()
     }
     
+    func getThisBudgetMemberId(budgetId: Int, completion: @escaping (Result<BudgetMember, Error>) -> ()){
+        guard let url = URL(string: baseURL + "/budget_member/this/\(budgetId)") else {
+            //completion(.failure(fatalError("Wrong url")))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue(getToken(), forHTTPHeaderField: "x-access-token")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            guard let data = data, error == nil else {
+                DispatchQueue.main.async {
+                    completion(.failure(error!))
+                    print("Error getting data" + error!.localizedDescription )
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                do {
+                    let response = try self.jsonDecoder.decode(BudgetMember.self, from: data)
+                    completion(.success(response))
+                    print("Got transactions correctly \(self.getId())" )
+                } catch let error {
+                    completion(.failure(error))
+                    print("Error parsing json to budget model" )
+                    
+                    return
+                }
+            }
+        }.resume()
+    }
+    
+    
     func getCurrencies(completion: @escaping (Result<[Currency], Error>) -> ()){
         guard let url = URL(string: baseURL + "/currencies") else {
             //completion(.failure(fatalError("Wrong url")))

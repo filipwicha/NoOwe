@@ -10,6 +10,7 @@ import SwiftUI
 
 struct BudgetListView: View {
     @ObservedObject var budgetListViewModel: BudgetListViewModel = BudgetListViewModel()
+
     @State private var showModal: Bool = false
     
     init(){

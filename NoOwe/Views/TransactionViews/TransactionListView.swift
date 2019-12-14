@@ -10,6 +10,7 @@ import SwiftUI
 
 struct TransactionListView: View {
     @ObservedObject var transactionListVM: TransactionListViewModel
+    var currencyDownload: NewBudgetViewModel = NewBudgetViewModel()
     
     let budget: BudgetViewModel
     
@@ -17,14 +18,17 @@ struct TransactionListView: View {
         self.budget = budget
         self.transactionListVM = TransactionListViewModel(budget: budget)
         self.setNavigationBarColor(colorString: budget.color)
+        self.currencyDownload.fetchCurrencies()
     }
     
     var body: some View {
         List{
             ForEach(self.transactionListVM.transactions){ transaction in
             
-            Text(transaction.title)
-            
+                VStack {
+                    Text(transaction.title)
+                    Text("\(self.transactionListVM.getTransactionTotal(id: transaction.id)) \(self.currencyDownload.currencies.filter {$0.id == self.budget.currencyId}[0].code)")
+                }
             }
             
             Button(action:{
