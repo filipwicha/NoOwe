@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct CreateNewBudgetView: View {
-    @Environment(\.presentationMode) var showModal: Binding<PresentationMode>
+    //@Environment(\.presentationMode) var showModal: Binding<PresentationMode>
     @ObservedObject var newBudgetVM = NewBudgetViewModel()
     
     var body: some View {
@@ -98,12 +98,15 @@ struct CreateNewBudgetView: View {
     }
     
     func hideThisModal(){
-        self.showModal.wrappedValue.dismiss()
+        //self.showModal.wrappedValue.dismiss()
     }
 }
 
+
+#if DEBUG
 struct CreateNewBudgetView_Previews: PreviewProvider {
     static var previews: some View {
         CreateNewBudgetView()
     }
 }
+#endif

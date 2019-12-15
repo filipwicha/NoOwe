@@ -57,9 +57,11 @@ struct BudgetListView: View {
     }
 }
 
+#if DEBUG
 struct BudgetListView_Previews: PreviewProvider {
     static var previews: some View {
         BudgetListView()
         
     }
 }
+#endif

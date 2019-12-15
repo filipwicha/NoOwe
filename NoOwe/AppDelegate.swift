@@ -2,11 +2,11 @@
 //  AppDelegate.swift
 //  NoOwe
 //
-//  Created by Filip Wicha on 02/12/2019.
+//  Created by Filip Wicha on 14/12/2019.
 //  Copyright © 2019 Filip Wicha. All rights reserved.
 //
 
-import UIKit 
+import UIKit
 import CoreData
 
 @UIApplicationMain
@@ -16,11 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-//        
-//        UINavigationBar.appearance().backgroundColor = UIColor(red: 165/255, green:94/255, blue: 234/255, alpha: 1.0)
-//        
-//        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-//        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         return true
     }
 
@@ -40,14 +35,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data stack
 
-    lazy var persistentContainer: NSPersistentCloudKitContainer = {
+    lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentCloudKitContainer(name: "NoOwe")
+        let container = NSPersistentContainer(name: "NoOwe")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.

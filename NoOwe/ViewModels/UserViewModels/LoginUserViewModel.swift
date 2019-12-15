@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftKeychainWrapper
 
 class LoginUserViewModel: ObservableObject {
     @Published var email: String = ""
@@ -20,9 +19,12 @@ class LoginUserViewModel: ObservableObject {
     init() {
         self.webService = WebService()
         let dateString: String? = KeychainWrapper.standard.string(forKey: "expiresIn")
-        if dateString!.toDate() > Date() {
-            loginCompleated = true
+        if dateString != nil {
+            if dateString!.toDate() > Date() {
+                loginCompleated = true
+            }
         }
+        
     }
     
     func loginUser() {

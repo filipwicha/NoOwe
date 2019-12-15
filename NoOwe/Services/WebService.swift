@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftKeychainWrapper
 
 class WebService {
     let baseURL: String = "https:noowe.herokuapp.com"
@@ -121,7 +120,7 @@ class WebService {
                     print("Login correct" )
                 } catch let error {
                     completion(.failure(error))
-                    print("Error parsing json to model" )
+                    print("Error parsing json to model LOGIN" )
                     return
                 }
             }

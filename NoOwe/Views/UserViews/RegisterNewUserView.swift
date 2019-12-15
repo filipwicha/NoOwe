@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct RegisterNewUserView: View {
-    @Environment(\.presentationMode) var showModal: Binding<PresentationMode>
+    //@Environment(\.presentationMode) var showModal: Binding<PresentationMode>
     @ObservedObject private var registerNewUserVM = RegisterNewUserViewModel()
     
     var body: some View {
@@ -48,12 +48,14 @@ struct RegisterNewUserView: View {
     }
     
     func hideThisModal(){
-        self.showModal.wrappedValue.dismiss()
+        //self.showModal.wrappedValue.dismiss()
     }
 }
 
+#if DEBUG
 struct RegisterNewUserView_Previews: PreviewProvider {
     static var previews: some View {
         RegisterNewUserView()
     }
 }
+#endif

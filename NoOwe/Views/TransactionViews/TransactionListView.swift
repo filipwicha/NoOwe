@@ -73,8 +73,10 @@ struct TransactionListView: View {
 
 
 
+#if DEBUG
 struct TransactionListView_Previews: PreviewProvider {
     static var previews: some View {
         TransactionListView(budget: BudgetViewModel(budget: Budget(id: 4, name: "lkk", color: "2222", owner_id: 1, currency_id: 1)))
     }
 }
+#endif
