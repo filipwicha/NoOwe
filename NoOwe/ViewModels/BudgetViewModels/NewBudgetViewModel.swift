@@ -34,6 +34,10 @@ class NewBudgetViewModel: ObservableObject {
     }
     
     func addNewBudget() {
+        print(self.budgetMembers.map({ (member) -> String in
+            return member.name
+        }))
+        
         self.webService.createNewBudget(newBudget: NewBudget(
             name: self.name,
             color: self.color,

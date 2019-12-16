@@ -41,7 +41,7 @@ class WebService {
             guard let _ = data, error == nil else {
                 DispatchQueue.main.async {
                     completion(.failure(error!))
-                    print("Error getting data" + error!.localizedDescription )
+                    print("Registration fetch error " + error!.localizedDescription )
                 }
                 return
             }
@@ -69,13 +69,41 @@ class WebService {
             guard let _ = data, error == nil else {
                 DispatchQueue.main.async {
                     completion(.failure(error!))
-                    print("Error getting data" + error!.localizedDescription )
+                    print("New budget response fetch error " + error!.localizedDescription )
                 }
                 return
             }
             
             DispatchQueue.main.async {
                 completion(.success("New budget added correctly"))
+            }
+        }.resume()
+    }
+    
+    func createNewTransaction(newTransaction: Transaction, completion: @escaping (Result<String, Error>) -> ()) {
+        
+        guard let url = URL(string: baseURL + "/transaction/\(newTransaction.budget_id)") else {
+            fatalError("Invalid URL")
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONEncoder().encode(newTransaction)
+        request.addValue(getToken(), forHTTPHeaderField: "x-access-token")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            guard let _ = data, error == nil else {
+                DispatchQueue.main.async {
+                    completion(.failure(error!))
+                    print("New transaction response fetch error " + error!.localizedDescription )
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                completion(.success("New transaction added correctly"))
             }
         }.resume()
     }
@@ -97,7 +125,7 @@ class WebService {
             guard let data = data, error == nil else {
                 DispatchQueue.main.async {
                     completion(.failure(error!))
-                    print("Error getting data" + error!.localizedDescription )
+                    print("Login response fetch error " + error!.localizedDescription )
                 }
                 return
             }
@@ -142,7 +170,7 @@ class WebService {
             guard let data = data, error == nil else {
                 DispatchQueue.main.async {
                     completion(.failure(error!))
-                    print("Error getting data" + error!.localizedDescription )
+                    print("Error getting budgets" + error!.localizedDescription )
                 }
                 return
             }
@@ -177,7 +205,7 @@ class WebService {
             guard let data = data, error == nil else {
                 DispatchQueue.main.async {
                     completion(.failure(error!))
-                    print("Error getting data" + error!.localizedDescription )
+                    print("Error getting transactions" + error!.localizedDescription )
                 }
                 return
             }
@@ -189,8 +217,7 @@ class WebService {
                     print("Got transactions correctly \(self.getId())" )
                 } catch let error {
                     completion(.failure(error))
-                    print("Error parsing json to budget model" )
-                    
+                    print("Error parsing json to transaction model" )
                     return
                 }
             }
@@ -212,7 +239,7 @@ class WebService {
             guard let data = data, error == nil else {
                 DispatchQueue.main.async {
                     completion(.failure(error!))
-                    print("Error getting data" + error!.localizedDescription )
+                    print("Error getting this budget member id " + error!.localizedDescription )
                 }
                 return
             }
@@ -221,10 +248,45 @@ class WebService {
                 do {
                     let response = try self.jsonDecoder.decode(BudgetMember.self, from: data)
                     completion(.success(response))
-                    print("Got transactions correctly \(self.getId())" )
+                    print("Got this budget member correctly \(self.getId())" )
                 } catch let error {
                     completion(.failure(error))
-                    print("Error parsing json to budget model" )
+                    print("Error parsing json to this budget member id" )
+                    
+                    return
+                }
+            }
+        }.resume()
+    }
+    
+    func getBudgetMembers(budgetId: Int, completion: @escaping (Result<[BudgetMember], Error>) -> ()){
+        guard let url = URL(string: baseURL + "/budget_members/\(budgetId)") else {
+            //completion(.failure(fatalError("Wrong url")))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue(getToken(), forHTTPHeaderField: "x-access-token")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            guard let data = data, error == nil else {
+                DispatchQueue.main.async {
+                    completion(.failure(error!))
+                    print("Error getting budget members" + error!.localizedDescription )
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                do {
+                    let response = try self.jsonDecoder.decode([BudgetMember].self, from: data)
+                    completion(.success(response))
+                    print("Got budget members correctly" )
+                } catch let error {
+                    completion(.failure(error))
+                    print("Error parsing json to budgetMember model" )
                     
                     return
                 }
@@ -248,7 +310,7 @@ class WebService {
             guard let data = data, error == nil else {
                 DispatchQueue.main.async {
                     completion(.failure(error!))
-                    print("Error getting data" + error!.localizedDescription )
+                    print("Error getting currencies" + error!.localizedDescription )
                 }
                 return
             }
@@ -257,10 +319,45 @@ class WebService {
                 do {
                     let response = try self.jsonDecoder.decode([Currency].self, from: data)
                     completion(.success(response))
-                    print("Got budgets correctly" )
+                    print("Got currencies correctly" )
                 } catch let error {
                     completion(.failure(error))
-                    print("Error parsing json to budget model" )
+                    print("Error parsing json to currencies model" )
+                    
+                    return
+                }
+            }
+        }.resume()
+    }
+    
+    func getCategories(completion: @escaping (Result<[Category], Error>) -> ()){
+        guard let url = URL(string: baseURL + "/categories") else {
+            //completion(.failure(fatalError("Wrong url")))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue(getToken(), forHTTPHeaderField: "x-access-token")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            guard let data = data, error == nil else {
+                DispatchQueue.main.async {
+                    completion(.failure(error!))
+                    print("Error getting categories" + error!.localizedDescription )
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                do {
+                    let response = try self.jsonDecoder.decode([Category].self, from: data)
+                    completion(.success(response))
+                    print("Got categoires correctly" )
+                } catch let error {
+                    completion(.failure(error))
+                    print("Error parsing json to categories model" )
                     
                     return
                 }

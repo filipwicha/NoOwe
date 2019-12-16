@@ -14,14 +14,11 @@ struct LoginView: View {
     @State private var showModal: Bool = false
     
     var body: some View {
-        ViewConditionedByLogin()
-    }
-    
-    func ViewConditionedByLogin() -> AnyView {
-        if self.loginUserViewModel.loginCompleated {
-            return AnyView(BudgetListView())
-        } else {
-            return AnyView(
+        //        ViewConditionedByLogin()
+        Group {
+            if self.loginUserViewModel.loginCompleated {
+                BudgetListView()
+            } else {
                 VStack{
                     Form {
                         
@@ -51,9 +48,48 @@ struct LoginView: View {
                         RegisterNewUserView()
                     }
                 }
-            )
+                
+            }
         }
     }
+    
+//    func ViewConditionedByLogin() -> AnyView {
+//        if self.loginUserViewModel.loginCompleated {
+//            return AnyView(BudgetListView())
+//        } else {
+//            return AnyView(
+//                VStack{
+//                    Form {
+//
+//                        Section(header: Text("Enter email address")) {
+//                            TextField("email@email.com", text: self.$loginUserViewModel.email)
+//                        }
+//
+//                        Section(header: Text("Enter password"), footer: Text(self.loginUserViewModel.message)
+//                        ){
+//                            SecureField("password", text: self.$loginUserViewModel.password)
+//                        }
+//                    }
+//
+//                    Button(action: {
+//                        self.loginUser()
+//                    }, label: {
+//                        Text("Login")
+//                    })
+//
+//                    Button(action: {
+//                        self.showRegistrationModal()
+//                    }) {
+//                        Text("Register!")
+//                    }
+//
+//                    .sheet(isPresented: self.$showModal){
+//                        RegisterNewUserView()
+//                    }
+//                }
+//            )
+//        }
+//    }
     
     func showRegistrationModal(){
         self.showModal = true

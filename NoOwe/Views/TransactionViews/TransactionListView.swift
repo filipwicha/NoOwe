@@ -12,6 +12,8 @@ struct TransactionListView: View {
     @ObservedObject var transactionListVM: TransactionListViewModel
     var currencyDownload: NewBudgetViewModel = NewBudgetViewModel()
     
+    @State private var showModal: Bool = false
+    
     let budget: BudgetViewModel
     
     init(budget: BudgetViewModel){
@@ -27,12 +29,12 @@ struct TransactionListView: View {
             
                 VStack {
                     Text(transaction.title)
-                    Text("\(self.transactionListVM.getTransactionTotal(id: transaction.id)) \(self.currencyDownload.currencies.filter {$0.id == self.budget.currencyId}[0].code)")
+                    Text("\(self.transactionListVM.getTransactionTotal(id: transaction.id), specifier: "%.2f") \(self.currencyDownload.currencies.filter {$0.id == self.budget.currencyId}[0].code)")
                 }
             }
             
             Button(action:{
-                //                    self.showNewBudgetModal()
+                self.showNewTransactionModal()
             }){
                 HStack{
                     Spacer()
@@ -41,6 +43,10 @@ struct TransactionListView: View {
                     
                 }
             }
+        }.sheet(isPresented: self.$showModal,
+                onDismiss: {  }
+        ){
+            CreateNewTransactionView(budget: self.budget)
         }
             
         .navigationBarTitle("\(budget.name)")
@@ -68,6 +74,10 @@ struct TransactionListView: View {
         b = CGFloat(Double(hueArray[2])!/Double(255))
         
         return UIColor(red: r, green: g, blue: b, alpha: 1)
+    }
+    
+    func showNewTransactionModal() {
+        self.showModal = true
     }
 }
 

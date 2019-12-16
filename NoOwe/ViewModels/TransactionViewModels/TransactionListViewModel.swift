@@ -12,7 +12,7 @@ class TransactionListViewModel: ObservableObject {
     
     @Published var transactions: [TransactionViewModel] = [TransactionViewModel]()
     @Published var budgetMember: BudgetMemberViewModel = BudgetMemberViewModel()
-
+    
     var budget: BudgetViewModel
     
     init(budget: BudgetViewModel){
@@ -48,16 +48,16 @@ class TransactionListViewModel: ObservableObject {
     }
     
     func fetchThisBudgetMemberId() {
-        WebService().getThisBudgetMemberId(budgetId: budget.id) { response in
-                switch response {
-                    
-                case .success(let budgetMember):
-                    self.budgetMember = BudgetMemberViewModel(budgetMember: budgetMember)
-                case .failure(let error):
-                    print("Error " + error.localizedDescription)
-                }
+        WebService().getThisBudgetMemberId(budgetId: self.budget.id) { response in
+            switch response {
+                
+            case .success(let budgetMember):
+                self.budgetMember = BudgetMemberViewModel(budgetMember: budgetMember)
+            case .failure(let error):
+                print("Error " + error.localizedDescription)
             }
         }
+    }
 }
 
 class TransactionViewModel: Identifiable {
@@ -94,7 +94,7 @@ class TransactionViewModel: Identifiable {
 }
 
 class ShareViewModel: Identifiable {
-
+    
     var share: Share
     
     init(share: Share){
@@ -117,34 +117,3 @@ class ShareViewModel: Identifiable {
         return self.share.transaction_id
     }
 }
-
-class BudgetMemberViewModel {
-
-    var budgetMember: BudgetMember
-    
-    init(budgetMember: BudgetMember){
-        self.budgetMember = budgetMember
-    }
-    
-    init(){
-        self.budgetMember = BudgetMember(id: -1, nickname: "Wrong", user_id: -1, budget_id: -1)
-    }
-    
-    var id: Int {
-        return self.budgetMember.id
-    }
-    
-    var nickname: String {
-        return self.budgetMember.nickname
-    }
-    
-    var userId: Int {
-        return self.budgetMember.user_id
-    }
-    
-    var budgetId: Int {
-        return self.budgetMember.budget_id
-    }
-}
-
-
