@@ -40,6 +40,7 @@
 		DC46FDB323A6A48D00DCB9C5 /* NewTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46FDB223A6A48D00DCB9C5 /* NewTransactionViewModel.swift */; };
 		DC46FDB523A6A56600DCB9C5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46FDB423A6A56600DCB9C5 /* Category.swift */; };
 		DC46FDB723A6BFC400DCB9C5 /* BudgetMemberListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46FDB623A6BFC300DCB9C5 /* BudgetMemberListViewModel.swift */; };
+		DC46FDB923A763F700DCB9C5 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46FDB823A763F600DCB9C5 /* ShareViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		DC46FDB223A6A48D00DCB9C5 /* NewTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransactionViewModel.swift; sourceTree = "<group>"; };
 		DC46FDB423A6A56600DCB9C5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DC46FDB623A6BFC300DCB9C5 /* BudgetMemberListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetMemberListViewModel.swift; sourceTree = "<group>"; };
+		DC46FDB823A763F600DCB9C5 /* ShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 				DC46FDB623A6BFC300DCB9C5 /* BudgetMemberListViewModel.swift */,
 				DC3A3F7B23A54CC50094F53B /* TransactionListViewModel.swift */,
 				DC46FDB223A6A48D00DCB9C5 /* NewTransactionViewModel.swift */,
+				DC46FDB823A763F600DCB9C5 /* ShareViewModel.swift */,
 			);
 			path = TransactionViewModels;
 			sourceTree = "<group>";
@@ -238,8 +241,8 @@
 		DC3A3F8823A54CC50094F53B /* BudgetViews */ = {
 			isa = PBXGroup;
 			children = (
-				DC3A3F8923A54CC50094F53B /* CreateNewBudgetView.swift */,
 				DC3A3F8A23A54CC50094F53B /* BudgetListView.swift */,
+				DC3A3F8923A54CC50094F53B /* CreateNewBudgetView.swift */,
 			);
 			path = BudgetViews;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				DC3A3F7423A54CAE0094F53B /* Share.swift in Sources */,
 				DC3A3F9023A54CC50094F53B /* BudgetListViewModel.swift in Sources */,
 				DC3A3F9523A54CC50094F53B /* CreateNewBudgetView.swift in Sources */,
+				DC46FDB923A763F700DCB9C5 /* ShareViewModel.swift in Sources */,
 				DC3A3F6523A54C8B0094F53B /* ExtensionFunctions.swift in Sources */,
 				DC3A3F9623A54CC50094F53B /* BudgetListView.swift in Sources */,
 				DC3A3F9323A54CC50094F53B /* LoginView.swift in Sources */,

@@ -11,14 +11,15 @@ import Foundation
 class TransactionListViewModel: ObservableObject {
     
     @Published var transactions: [TransactionViewModel] = [TransactionViewModel]()
-    @Published var budgetMember: BudgetMemberViewModel = BudgetMemberViewModel()
+    @Published var budgetMemberListVM: BudgetMemberListViewModel
     
     var budget: BudgetViewModel
     
     init(budget: BudgetViewModel){
         self.budget = budget
-        
-        fetchThisBudgetMemberId()
+        self.budgetMemberListVM = BudgetMemberListViewModel()
+        self.budgetMemberListVM.fetchBudgetMembers(budgetId: self.budget.id)
+//        fetchThisBudgetMemberId()
         fetchTransactions()
     }
     
@@ -47,17 +48,17 @@ class TransactionListViewModel: ObservableObject {
         }
     }
     
-    func fetchThisBudgetMemberId() {
-        WebService().getThisBudgetMemberId(budgetId: self.budget.id) { response in
-            switch response {
-                
-            case .success(let budgetMember):
-                self.budgetMember = BudgetMemberViewModel(budgetMember: budgetMember)
-            case .failure(let error):
-                print("Error " + error.localizedDescription)
-            }
-        }
-    }
+//    func fetchThisBudgetMemberId() {
+//        WebService().getThisBudgetMemberId(budgetId: self.budget.id) { response in
+//            switch response {
+//
+//            case .success(let budgetMember):
+//                self.budgetMemberListVM = BudgetMemberListViewModel(budgetMember: budgetMember)
+//            case .failure(let error):
+//                print("Error " + error.localizedDescription)
+//            }
+//        }
+//    }
 }
 
 class TransactionViewModel: Identifiable {
@@ -93,27 +94,3 @@ class TransactionViewModel: Identifiable {
     }
 }
 
-class ShareViewModel: Identifiable {
-    
-    var share: Share
-    
-    init(share: Share){
-        self.share = share
-    }
-    
-    var id: Int {
-        return self.share.id
-    }
-    
-    var amount: Double {
-        return self.share.amount
-    }
-    
-    var memberId: Int {
-        return self.share.member_id
-    }
-    
-    var transactionId: Int {
-        return self.share.transaction_id
-    }
-}

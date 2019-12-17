@@ -9,32 +9,45 @@
 import Foundation
 
 class NewTransactionViewModel: ObservableObject {
+    @Published var budgetMemberListVM: BudgetMemberListViewModel
+    @Published var budgetVM: BudgetViewModel
+    
     @Published var title: String = ""
     @Published var categoryId: Int = 0
     
-    @Published var sharesPositive: [Share] = [] //how much did somebody pay
-    @Published var sharesNegative: [Share] = [] //how much somebody owes
-
+    @Published var sharesPositive: [ShareViewModel] = [] //how much did somebody pay
+    @Published var sharesNegative: [ShareViewModel] = [] //how much somebody owes
+    
+    @Published var shares: [(memberId: Int, nickname: String, positive: String, negative: String)] = []
+    
     @Published var categories = []
     
     @Published var message = "Fill the form to create new transaction"
     @Published var creationCompleated = false
     
     
-    var budgetVM: BudgetViewModel
-    var budgetMemberListVM: BudgetMemberListViewModel = BudgetMemberListViewModel()
+    var webService: WebService = WebService()
     
-    var webService: WebService
-    
-    init(budgetViewModel: BudgetViewModel) {
-        self.webService = WebService()
-        self.budgetVM = budgetViewModel
+    init(budgetVM: BudgetViewModel, budgetMemberListVM: BudgetMemberListViewModel) {
+        self.budgetVM = budgetVM
+        self.budgetMemberListVM = budgetMemberListVM
+        
+        self.shares = budgetMemberListVM.budgetMembers.map {
+            (memberId: $0.id, nickname: $0.nickname, positive: "", negative: "")
+        }
         
         self.fetchCategories()
-        self.budgetMemberListVM.fetchBudgetMembers(budgetId: budgetVM.id)
     }
     
     func addNewTransaction() {
+        
+        self.shares.forEach { share in
+            let sharePositiveValue: Double = Double(share.positive) ?? 0.0
+            let shareNegativeValue: Double = Double(share.negative) ?? 0.0
+            
+            sharesPositive.append(ShareViewModel(share: Share(id: -1, amount: sharePositiveValue, member_id: share.memberId, transaction_id: -1)))
+            sharesNegative.append(ShareViewModel(share: Share(id: -1, amount: shareNegativeValue * -1, member_id: share.memberId, transaction_id: -1)))
+        }
         
         self.webService.createNewTransaction(newTransaction: Transaction(
             id: -1,
@@ -42,7 +55,7 @@ class NewTransactionViewModel: ObservableObject {
             date: Date(),
             budget_id: budgetVM.id,
             category_id: categoryId,
-            shares: sharesPositive + sharesNegative
+            shares: sharesPositive.map {$0.share} + sharesNegative.map {$0.share}
             ))
         { response in
             switch response {
@@ -55,6 +68,31 @@ class NewTransactionViewModel: ObservableObject {
             }
         }
     }
+    
+//    func getBudgetMemberNickname(budgetMemberId: Int) -> String {
+//        var nickname:String = "Error"
+//        self.budgetMembers.forEach{ budgetMember in
+//            if budgetMember.id == budgetMemberId{
+//                nickname = budgetMember.nickname
+//            }
+//        }
+//
+//        return nickname
+//    }
+//
+//    func createTemplateShares() {
+//        var id: Int = -1
+//        budgetMembers.forEach { budgetMember in
+//            self.sharesPositive.append(
+//                ShareViewModel(share: Share(id: self.sharesPositive.count, amount: 0.0, member_id: budgetMember.id, transaction_id: -1))
+//            )
+//            self.sharesNegative.append(
+//                ShareViewModel(share: Share(id: self.sharesNegative.count, amount: 0.0, member_id: budgetMember.id, transaction_id: -1))
+//            )
+//            id -= 1
+//        }
+//    }
+    
     
     func fetchCategories(){
         

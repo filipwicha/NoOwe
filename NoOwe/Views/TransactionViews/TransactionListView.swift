@@ -46,7 +46,7 @@ struct TransactionListView: View {
         }.sheet(isPresented: self.$showModal,
                 onDismiss: {  }
         ){
-            CreateNewTransactionView(budget: self.budget)
+            CreateNewTransactionView(budget: self.budget, budgetMemberListVM: self.transactionListVM.budgetMemberListVM)
         }
             
         .navigationBarTitle("\(budget.name)")
