@@ -12,7 +12,7 @@ class WebService {
     let baseURL: String = "https:noowe.herokuapp.com"
     
     init(){
-
+        
     }
     
     private let jsonDecoder: JSONDecoder = {
@@ -143,7 +143,7 @@ class WebService {
                     KeychainWrapper.standard.set(user.password, forKey: "password")
                     KeychainWrapper.standard.set(response.accessToken , forKey: "jwtToken")
                     KeychainWrapper.standard.set(dateString, forKey: "expiresIn")
-
+                    
                     completion(.success(response))
                     print("Login correct" )
                 } catch let error {
@@ -363,6 +363,31 @@ class WebService {
                 }
             }
         }.resume()
+    }
+    
+    func deleteBudget(budgetId: Int, completion: @escaping (Result<String, Error>) -> ()){
+        guard let url = URL(string: baseURL + "/budget/\(budgetId)") else {
+            //completion(.failure(fatalError("Wrong url")))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.addValue(getToken(), forHTTPHeaderField: "x-access-token")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let _ = data, error == nil else {
+                DispatchQueue.main.async {
+                    completion(.failure(error!))
+                    print("Deleted budget error " + error!.localizedDescription )
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                completion(.success("Deleted budget"))
+            }
+        }
     }
     
     func getToken() -> String {

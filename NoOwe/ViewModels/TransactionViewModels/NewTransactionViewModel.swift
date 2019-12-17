@@ -43,7 +43,7 @@ class NewTransactionViewModel: ObservableObject {
         
         self.shares.forEach { share in
             let sharePositiveValue: Double = Double(share.positive) ?? 0.0
-            let shareNegativeValue: Double = Double(share.negative) ?? 0.0
+            let shareNegativeValue: Double = Double(share.positive) ?? 0.0
             
             sharesPositive.append(ShareViewModel(share: Share(id: -1, amount: sharePositiveValue, member_id: share.memberId, transaction_id: -1)))
             sharesNegative.append(ShareViewModel(share: Share(id: -1, amount: shareNegativeValue * -1, member_id: share.memberId, transaction_id: -1)))
@@ -92,7 +92,6 @@ class NewTransactionViewModel: ObservableObject {
 //            id -= 1
 //        }
 //    }
-    
     
     func fetchCategories(){
         

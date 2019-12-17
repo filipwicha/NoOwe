@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BudgetListView: View {
     @ObservedObject var budgetListViewModel: BudgetListViewModel = BudgetListViewModel()
-
+    
     @State private var showModal: Bool = false
     
     init(){
@@ -19,30 +19,40 @@ struct BudgetListView: View {
     
     var body: some View {
         NavigationView{
-            List{ ForEach(self.budgetListViewModel.budgets){ budget in
-                NavigationLink(destination: TransactionListView(budget: budget)){
-                    Text(budget.name)
-                }
-                }
-                
-                Button(action:{
-                    self.showNewBudgetModal()
-                }){
-                    HStack{
-                        Spacer()
-                        Image(systemName: "plus")
-                        Spacer()
-                        
+            VStack{
+                List {
+                    ForEach(self.budgetListViewModel.budgets){ budget in
+                        NavigationLink(destination: TransactionListView(budget: budget)){
+                            HStack{
+                                ZStack{
+                                    Circle()
+                                        .fill(self.getColor(colorString: budget.color))
+                                    Text(budget.name.prefix(1)).bold().font(.largeTitle)
+                                }.frame(width: 80, height: 80)
+                                
+                                Text(budget.name).font(.title).bold().padding(12)
+                            }
+                        }
                     }
                 }
             }
                 
             .navigationBarTitle("Budgets")
             .navigationBarItems(trailing:
-                Button(action:{
-                    self.budgetListViewModel.fetchBudgets()
-                }){
-                    Image(systemName: "arrow.clockwise").foregroundColor(Color.white)
+                HStack{
+                    Button(action:{
+                        self.budgetListViewModel.fetchBudgets()
+                    }){
+                        Image(systemName: "arrow.clockwise").foregroundColor(Color.white)
+                    }
+                    Text("  ")
+                    Button(action:{
+                        self.showNewBudgetModal()
+                    }){
+                        HStack{
+                            Image(systemName: "plus").foregroundColor(Color.white)
+                        }
+                    }
                 }
             )
         }.sheet(isPresented: self.$showModal,
@@ -54,6 +64,17 @@ struct BudgetListView: View {
     
     func showNewBudgetModal(){
         self.showModal = true
+    }
+    
+    func getColor(colorString: String) -> Color {
+        let hueArray: [String] = colorString.components(separatedBy: ",")
+        let full = Double(255)
+        
+        let r = Double(hueArray[0])!/full
+        let g = Double(hueArray[1])!/full
+        let b = Double(hueArray[2])!/full
+        
+        return Color(red: r, green: g, blue: b)
     }
 }
 

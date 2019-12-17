@@ -48,6 +48,18 @@ class TransactionListViewModel: ObservableObject {
         }
     }
     
+    func deleteBudget(budgetId: Int){
+        WebService().deleteBudget(budgetId: budgetId) { response in
+            switch response {
+                
+            case .success(_):
+                print("Deleted budget")
+            case .failure(let error):
+                print("Error " + error.localizedDescription)
+            }
+        }
+    }
+    
 //    func fetchThisBudgetMemberId() {
 //        WebService().getThisBudgetMemberId(budgetId: self.budget.id) { response in
 //            switch response {

@@ -16,7 +16,7 @@ class NewBudgetViewModel: ObservableObject {
     @Published var numberOfMembers: Int = 0
     @Published var budgetMembers: [Nickname] = []
     @Published var currencies: [CurrencyViewModel] = []
-    @Published var colors: [String] = ["107,69,69","107,104,69","79,107,69","69,107,92","69,96,107","71,69,107","95,69,107","107,69,90","115,115,115"]
+    @Published var colors: [String] = ["211,47,47","194,24,91","123,31,162","69,39,160","40,53,147","25,118,210","0,105,92","249,168,37","216,67,21"]
     
     @Published var message = "Fill the form to create new budget"
     @Published var creationCompleated = false

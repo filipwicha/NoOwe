@@ -24,47 +24,67 @@ struct TransactionListView: View {
     }
     
     var body: some View {
-        List{
-            ForEach(self.transactionListVM.transactions){ transaction in
-            
-                VStack {
-                    Text(transaction.title)
-                    Text("\(self.transactionListVM.getTransactionTotal(id: transaction.id), specifier: "%.2f") \(self.currencyDownload.currencies.filter {$0.id == self.budget.currencyId}[0].code)")
-                }
-            }
-            
-            Button(action:{
-                self.showNewTransactionModal()
-            }){
-                HStack{
-                    Spacer()
-                    Image(systemName: "plus")
-                    Spacer()
+        GeometryReader { geometry in
+            List{
+//                ScrollView {
+//                    ForEach()
+//                }.frame(width: geometry.size.width-30, height: 200)
+                
+                Button(action:{
+                    self.showNewTransactionModal()
+                }){
+                    HStack{
+                        Spacer()
+                        Image(systemName: "plus").resizable().frame(width: 30, height: 30)
+                        Spacer()
+                        
+                    }
+                }.frame(width: geometry.size.width-30, height: 50)
+                
+                ForEach(self.transactionListVM.transactions){ transaction in
+                    
+                    HStack(alignment: .center){
+                        ZStack(alignment: .leading){
+                            RoundedRectangle(cornerRadius: 15)
+                                .stroke(self.getColor(colorString: self.budget.color), lineWidth: 10)
+                            
+                            HStack {
+                                Text(transaction.title).font(.headline).padding(20)
+                                Spacer()
+                                VStack{
+                                    Text("\(self.transactionListVM.getTransactionTotal(id: transaction.id), specifier: "%.2f") \(self.currencyDownload.currencies.filter {$0.id == self.budget.currencyId}[0].code)").font(.title).bold().padding(20)
+                                  //  Image(systemName: transaction.categoryId)
+                                }
+                            }
+                        }.frame(width: geometry.size.width-30, height: 140)
+                    }
+                    
                     
                 }
+                
+                
+            }.sheet(isPresented: self.$showModal,
+                    onDismiss: {  }
+            ){
+                CreateNewTransactionView(budget: self.budget, budgetMemberListVM: self.transactionListVM.budgetMemberListVM, currencySymbol: self.currencyDownload.currencies.filter {$0.id == self.budget.currencyId}[0].code)
             }
-        }.sheet(isPresented: self.$showModal,
-                onDismiss: {  }
-        ){
-            CreateNewTransactionView(budget: self.budget, budgetMemberListVM: self.transactionListVM.budgetMemberListVM)
-        }
-            
-        .navigationBarTitle("\(budget.name)")
+                
+            .navigationBarTitle("\(self.budget.name)")
             .navigationBarItems(trailing:
                 Button(action:{
                     self.transactionListVM.fetchTransactions()
                 }){
                     Image(systemName: "arrow.clockwise").foregroundColor(Color.white)
                 }
-        )
-        
+            )
+        }
     }
     
     func setNavigationBarColor(colorString: String){
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         UINavigationBar.appearance().backgroundColor = getColor(colorString: colorString)
     }
-
+    
     func getColor(colorString: String) -> UIColor {
         let hueArray: [String] = colorString.components(separatedBy: ",")
         let r, g, b: CGFloat
@@ -78,6 +98,17 @@ struct TransactionListView: View {
     
     func showNewTransactionModal() {
         self.showModal = true
+    }
+    
+    func getColor(colorString: String) -> Color {
+        let hueArray: [String] = colorString.components(separatedBy: ",")
+        let full = Double(255)
+        
+        let r = Double(hueArray[0])!/full
+        let g = Double(hueArray[1])!/full
+        let b = Double(hueArray[2])!/full
+        
+        return Color(red: r, green: g, blue: b)
     }
 }
 

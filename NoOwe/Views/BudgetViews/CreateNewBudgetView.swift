@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct CreateNewBudgetView: View {
-    //@Environment(\.presentationMode) var showModal: Binding<PresentationMode>
+    @Environment(\.presentationMode) var showModal: Binding<PresentationMode>
     @ObservedObject var newBudgetVM = NewBudgetViewModel()
     
     var body: some View {
@@ -87,18 +87,16 @@ struct CreateNewBudgetView: View {
     }
     
     func createBudget(){
-        
-        //self.showModal.wrappedValue.dismiss()
-        
         if(self.newBudgetVM.creationCompleated) {
             self.hideThisModal()
         } else {
             self.newBudgetVM.addNewBudget()
+            self.hideThisModal()
         }
     }
     
     func hideThisModal(){
-        //self.showModal.wrappedValue.dismiss()
+        self.showModal.wrappedValue.dismiss()
     }
 }
 
