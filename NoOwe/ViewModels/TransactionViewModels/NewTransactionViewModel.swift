@@ -13,15 +13,15 @@ class NewTransactionViewModel: ObservableObject {
     @Published var budgetVM: BudgetViewModel
     
     @Published var title: String = ""
-    @Published var categoryId: Int = 0
+    @Published var category: Int = 0
     
     @Published var sharesPositive: [ShareViewModel] = [] //how much did somebody pay
     @Published var sharesNegative: [ShareViewModel] = [] //how much somebody owes
     
     @Published var shares: [(memberId: Int, nickname: String, positive: String, negative: String)] = []
     
-    @Published var categories = []
-    
+    @Published var categories: [CategoryViewModel] = []
+    @Published var caregoriesEmojis: [String] = ["🐶","💅🏻","👶🏻","🍸","💻","🍕","🛩","🎓","👩‍❤️‍👨","🛍️","🏃","🍫","💩"]
     @Published var message = "Fill the form to create new transaction"
     @Published var creationCompleated = false
     
@@ -54,7 +54,7 @@ class NewTransactionViewModel: ObservableObject {
             title: title,
             date: Date(),
             budget_id: budgetVM.id,
-            category_id: categoryId,
+            category_id: self.category,
             shares: sharesPositive.map {$0.share} + sharesNegative.map {$0.share}
             ))
         { response in

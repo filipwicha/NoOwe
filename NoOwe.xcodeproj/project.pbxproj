@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC199F4523AAC0B800FFBFBF /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = DC199F4423AAC0B800FFBFBF /* KeyboardObserving */; };
 		DC3A3F4D23A54C1B0094F53B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3A3F4C23A54C1B0094F53B /* AppDelegate.swift */; };
 		DC3A3F4F23A54C1B0094F53B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3A3F4E23A54C1B0094F53B /* SceneDelegate.swift */; };
 		DC3A3F5223A54C1B0094F53B /* NoOwe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC3A3F5023A54C1B0094F53B /* NoOwe.xcdatamodeld */; };
@@ -88,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC199F4523AAC0B800FFBFBF /* KeyboardObserving in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +267,9 @@
 			dependencies = (
 			);
 			name = NoOwe;
+			packageProductDependencies = (
+				DC199F4423AAC0B800FFBFBF /* KeyboardObserving */,
+			);
 			productName = NoOwe;
 			productReference = DC3A3F4923A54C1B0094F53B /* NoOwe.app */;
 			productType = "com.apple.product-type.application";
@@ -293,6 +298,9 @@
 				Base,
 			);
 			mainGroup = DC3A3F4023A54C1B0094F53B;
+			packageReferences = (
+				DC199F4323AAC0B800FFBFBF /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
+			);
 			productRefGroup = DC3A3F4A23A54C1B0094F53B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -544,6 +552,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DC199F4323AAC0B800FFBFBF /* XCRemoteSwiftPackageReference "KeyboardObserving" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nickffox/KeyboardObserving";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DC199F4423AAC0B800FFBFBF /* KeyboardObserving */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC199F4323AAC0B800FFBFBF /* XCRemoteSwiftPackageReference "KeyboardObserving" */;
+			productName = KeyboardObserving;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		DC3A3F5023A54C1B0094F53B /* NoOwe.xcdatamodeld */ = {
