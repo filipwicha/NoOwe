@@ -30,7 +30,7 @@ class BudgetMemberListViewModel: ObservableObject {
     }
 }
 
-class BudgetMemberViewModel {
+class BudgetMemberViewModel: Identifiable {
 
     var budgetMember: BudgetMember
     

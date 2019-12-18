@@ -33,18 +33,18 @@ struct CreateNewTransactionView: View {
                     Circle()
                     .stroke(
                         (
-                            self.GT(t:.p)-self.GT(t:.n) == 0 && self.GT(t:.p) > 0 ?
+                            !(self.GT(t:.p)-self.GT(t:.n) == 0 && self.GT(t:.p) > 0 && self.newTransactionVM.title != "") ?
+                                LinearGradient(
+                                        gradient: .init(colors: [Self.g1Start, Self.g1End]),
+                                        startPoint: .init(x: 0.5, y: 0),
+                                        endPoint: .init(x: 0.5, y: 0.6)
+                                )
+                                :
                                 LinearGradient(
                                     gradient: .init(colors: [Self.g2Start, Self.g2End]),
                                     startPoint: .init(x: 0.5, y: 0),
                                     endPoint: .init(x: 0.5, y: 0.6)
                                 )
-                                :
-                                LinearGradient(
-                                    gradient: .init(colors: [Self.g1Start, Self.g1End]),
-                                    startPoint: .init(x: 0.5, y: 0),
-                                    endPoint: .init(x: 0.5, y: 0.6)
-                            )
                         ), lineWidth: 30)
                         .rotationEffect(Angle(degrees: self.GT(t: .p)))
                         .animation(.linear)
@@ -138,7 +138,7 @@ struct CreateNewTransactionView: View {
                     self.createTransaction()
                 }) {
                     self.newTransactionVM.creationCompleated ? Text("See transactions") : Text("Create")
-                }.disabled(!(self.GT(t:.p)-self.GT(t:.n) == 0 && self.GT(t:.p) > 0 && self.newTransactionVM.title == ""))
+                }.disabled(!(self.GT(t:.p)-self.GT(t:.n) == 0 && self.GT(t:.p) > 0 && self.newTransactionVM.title != ""))
             }
         }.onAppear{
             

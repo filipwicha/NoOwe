@@ -13,65 +13,83 @@ struct CreateNewBudgetView: View {
     @ObservedObject var newBudgetVM = NewBudgetViewModel()
     
     var body: some View {
-        VStack{
-            VStack {
-                Form {
-                    Section(header: Text("Enter name of the budget")) {
-                        TextField("'Home budget', 'Journey' ...", text: self.$newBudgetVM.name)
-                    }
-                    
-                    Section(
-                        header: Text("Choose color")
-                    ){
-                        Picker(selection: self.$newBudgetVM.color,
-                               label: Image(systemName: "square.fill").foregroundColor(self.getColor(colorString: self.newBudgetVM.color)))
-                        {
-                            ForEach(0 ..< self.newBudgetVM.colors.count) {
-                                Image(systemName: "square.fill")
-                                    .foregroundColor(self.getColor(colorString: self.newBudgetVM.colors[$0]))
-                                    //.tag(self.colors[$0])
+        NavigationView{
+            VStack{
+                VStack {
+                    Form {
+                        Section(header: Text("Enter name of the budget")) {
+                            TextField("'Home budget', 'Journey' ...", text: self.$newBudgetVM.name)
+                        }
+                        
+                        Section(
+                            header: Text("Choose color")
+                        ){
+                            Picker(selection: self.$newBudgetVM.color, label: Text("Chosen color:").foregroundColor(self.getColor(colorString: self.newBudgetVM.color)))
+                            {
+                                ForEach(0 ..< self.newBudgetVM.colors.count) {
+                                    Image(systemName: "square.fill")
+                                        .tag(self.newBudgetVM.colors[$0])
+                                        .foregroundColor(self.getColor(colorString: self.newBudgetVM.colors[$0]))
+                                }
+                            }
+                            //                            .pickerStyle(SegmentedPickerStyle())
+                            
+                        }
+                        
+                        Section(
+                            header: Text("Choose currency"),
+                            footer: Text(self.newBudgetVM.message)
+                        ){
+                            Picker(selection: self.$newBudgetVM.currencyId, label: Text("Currency")) {
+                                ForEach(self.newBudgetVM.currencies.indices, id:\.self) { index in
+                                    Text(self.newBudgetVM.currencies[index].code).tag(self.newBudgetVM.currencies[index].id)
+                                }
+                            }
+                            .pickerStyle(SegmentedPickerStyle())
+                        }
+                        
+                        Section(
+                            header: Text("Add budget members")
+                        ){
+                            List{
+                                Text("Me")
+                                
+                                ForEach(self.newBudgetVM.budgetMembers, id:\.id) { member in
+                                    TextField("\(member.id + 2)'s user nickname", text: self.$newBudgetVM.budgetMembers[member.id].name)
+                                }
+                                
+                                Button(action: {
+                                    self.newBudgetVM.addNewBudgetMember()
+                                }) {
+                                    Image(systemName: "plus")
+                                }
                             }
                         }
+                        
+                        
                     }
-
-                    Section(
-                        header: Text("Choose currency"),
-                        footer: Text(self.newBudgetVM.message)
-                    ){
-                        Picker(selection: self.$newBudgetVM.currencyId, label: Text("Currency")) {
-                            ForEach(self.newBudgetVM.currencies.indices, id:\.self) { index in
-                                Text(self.newBudgetVM.currencies[index].code).tag(self.newBudgetVM.currencies[index].id)
-                            }
-                        }.pickerStyle(SegmentedPickerStyle())
-                    }
-                    
-                    Section(
-                        header: Text("Add budget members")
-                    ){
-                        List{
-                            Text("Me")
-                            
-                            ForEach(self.newBudgetVM.budgetMembers, id:\.id) { member in
-                                TextField("\(member.id + 2)'s user nickname", text: self.$newBudgetVM.budgetMembers[member.id].name)
-                            }
-                            
-                            Button(action: {
-                                self.newBudgetVM.addNewBudgetMember()
-                            }) {
-                                Image(systemName: "plus")
-                            }
-                        }
-                    }
-                    
-                    
+                }
+                
+                Button(action: {
+                    self.createBudget()
+                }) {
+                    self.newBudgetVM.creationCompleated ? Text("See budgets") : Text("Create")
                 }
             }
+            .navigationBarItems(
+                leading:
+                Text(self.newBudgetVM.name == "" ? "New budget" : "Budget: ")
+                    .font(.largeTitle)
+                    .bold(),
+                trailing:
+                Text(self.newBudgetVM.name)
+                    .foregroundColor(self.getColor(colorString: self.newBudgetVM.color))
+                    .font(.largeTitle)
+                    .bold()
+                
+            )
             
-            Button(action: {
-                self.createBudget()
-            }) {
-                self.newBudgetVM.creationCompleated ? Text("See budgets") : Text("Create")
-            }
+            
         }
     }
     

@@ -19,53 +19,55 @@ struct TransactionListView: View {
     init(budget: BudgetViewModel){
         self.budget = budget
         self.transactionListVM = TransactionListViewModel(budget: budget)
-        self.setNavigationBarColor(colorString: budget.color)
+        //        self.setNavigationBarColor(colorString: budget.color)
         self.currencyDownload.fetchCurrencies()
     }
     
     var body: some View {
         GeometryReader { geometry in
             List{
-//                ScrollView {
-//                    ForEach()
-//                }.frame(width: geometry.size.width-30, height: 200)
-                
-                Button(action:{
-                    self.showNewTransactionModal()
-                }){
-                    HStack{
-                        Spacer()
-                        Image(systemName: "plus").resizable().frame(width: 30, height: 30)
-                        Spacer()
-                        
-                    }
-                }.frame(width: geometry.size.width-30, height: 50)
-                
-                ForEach(self.transactionListVM.transactions){ transaction in
-                    
-                    HStack(alignment: .center){
-                        ZStack(alignment: .leading){
-                            RoundedRectangle(cornerRadius: 15)
-                                .stroke(self.getColor(colorString: self.budget.color), lineWidth: 10)
-                            
+                Section{
+                    VStack{
+                        Text("Summary")
+                        ForEach(self.transactionListVM.budgetMemberListVM.budgetMembers){ budgetMember in
                             HStack {
-                                Text(transaction.title).font(.headline).padding(20)
-                                Spacer()
-                                VStack{
-                                    Text("\(self.transactionListVM.getTransactionTotal(id: transaction.id), specifier: "%.2f") \(self.currencyDownload.currencies.filter {$0.id == self.budget.currencyId}[0].code)").font(.title).bold().padding(20)
-                                  //  Image(systemName: transaction.categoryId)
-                                }
+                                Text(budgetMember.nickname)
+                                Text("\(self.getTotalOwe(budgetMemberId: budgetMember.id), specifier: "%.2f") \(self.currencyDownload.currencies.filter {$0.id == self.budget.currencyId}[0].code)")
                             }
-                        }.frame(width: geometry.size.width-30, height: 140)
+                        }
                     }
+                }
+                Section{
+                    Button(action:{
+                        self.showNewTransactionModal()
+                    }){
+                        HStack{
+                            Spacer()
+                            Image(systemName: "plus").resizable().frame(width: 30, height: 30)
+                        }
+                        .padding(12)
+                    }.frame(width: geometry.size.width-30, height: 50)
                     
-                    
+                    ForEach(self.transactionListVM.transactions){ transaction in
+                        HStack(alignment: .center){
+                            ZStack(alignment: .leading){
+                                RoundedRectangle(cornerRadius: 15)
+                                    .stroke(self.getColor(colorString: self.budget.color), lineWidth: 10)
+                                
+                                HStack {
+                                    Text(transaction.title).font(.headline).padding(20)
+                                    Spacer()
+                                    VStack{
+                                        Text("\(self.transactionListVM.getTransactionTotal(id: transaction.id), specifier: "%.2f") \(self.currencyDownload.currencies.filter {$0.id == self.budget.currencyId}[0].code)").font(.title).bold().padding(20)
+                                        //  Image(systemName: transaction.categoryId)
+                                    }
+                                }
+                            }.frame(width: geometry.size.width-30, height: 140)
+                        }
+                    }
                 }
                 
-                
-            }.sheet(isPresented: self.$showModal,
-                    onDismiss: {  }
-            ){
+            }.sheet(isPresented: self.$showModal){
                 CreateNewTransactionView(budget: self.budget, budgetMemberListVM: self.transactionListVM.budgetMemberListVM, currencySymbol: self.currencyDownload.currencies.filter {$0.id == self.budget.currencyId}[0].code)
             }
                 
@@ -109,6 +111,19 @@ struct TransactionListView: View {
         let b = Double(hueArray[2])!/full
         
         return Color(red: r, green: g, blue: b)
+    }
+    
+    func getTotalOwe(budgetMemberId: Int) -> Double{
+        var owe: Double = 0.0
+        self.transactionListVM.transactions.forEach { transaction in
+            transaction.shares.forEach { share in
+                if share.member_id == budgetMemberId {
+                    owe += share.amount
+                }
+            }
+        }
+        
+        return owe
     }
 }
 

@@ -80,6 +80,7 @@
 		DC46FDB423A6A56600DCB9C5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DC46FDB623A6BFC300DCB9C5 /* BudgetMemberListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetMemberListViewModel.swift; sourceTree = "<group>"; };
 		DC46FDB823A763F600DCB9C5 /* ShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
+		DCB59D4823AABFD80058F952 /* Package */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Package; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +97,7 @@
 		DC3A3F4023A54C1B0094F53B = {
 			isa = PBXGroup;
 			children = (
+				DCB59D4823AABFD80058F952 /* Package */,
 				DC3A3F4B23A54C1B0094F53B /* NoOwe */,
 				DC3A3F4A23A54C1B0094F53B /* Products */,
 			);
