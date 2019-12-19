@@ -19,12 +19,11 @@ class LoginUserViewModel: ObservableObject {
     init() {
         self.webService = WebService()
         let dateString: String? = KeychainWrapper.standard.string(forKey: "expiresIn")
-        if dateString != nil {
+        if dateString != nil && dateString != "" {
             if dateString!.toDate() > Date() {
-                loginCompleated = true
+                self.loginCompleated = false
             }
         }
-        
     }
     
     func loginUser() {
@@ -41,7 +40,6 @@ class LoginUserViewModel: ObservableObject {
                 self.message = error.localizedDescription
             }
         }
-        
     }
 }
 

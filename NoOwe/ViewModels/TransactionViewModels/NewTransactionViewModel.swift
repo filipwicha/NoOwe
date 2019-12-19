@@ -25,7 +25,6 @@ class NewTransactionViewModel: ObservableObject {
     @Published var message = "Fill the form to create new transaction"
     @Published var creationCompleated = false
     
-    
     var webService: WebService = WebService()
     
     init(budgetVM: BudgetViewModel, budgetMemberListVM: BudgetMemberListViewModel) {
@@ -121,5 +120,9 @@ class CategoryViewModel: Identifiable {
     
     var photo: String {
         return self.category.photo
+    }
+    
+    var emoji: String {
+        return self.category.emoji
     }
 }

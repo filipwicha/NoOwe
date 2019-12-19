@@ -224,6 +224,8 @@ struct CreateNewTransactionView: View {
     }
     
     
+
+    
     func hideThisModal(){
         self.showModal.wrappedValue.dismiss()
     }

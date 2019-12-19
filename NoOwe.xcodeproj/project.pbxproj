@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DC199F4523AAC0B800FFBFBF /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = DC199F4423AAC0B800FFBFBF /* KeyboardObserving */; };
+		DC199F6323AC1DEE00FFBFBF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC199F6223AC1DEE00FFBFBF /* Settings.swift */; };
 		DC3A3F4D23A54C1B0094F53B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3A3F4C23A54C1B0094F53B /* AppDelegate.swift */; };
 		DC3A3F4F23A54C1B0094F53B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3A3F4E23A54C1B0094F53B /* SceneDelegate.swift */; };
 		DC3A3F5223A54C1B0094F53B /* NoOwe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC3A3F5023A54C1B0094F53B /* NoOwe.xcdatamodeld */; };
@@ -45,6 +46,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC09D16523AC31AE00C06727 /* NoOwe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoOwe.entitlements; sourceTree = "<group>"; };
+		DC199F6223AC1DEE00FFBFBF /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		DC3A3F4923A54C1B0094F53B /* NoOwe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoOwe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC3A3F4C23A54C1B0094F53B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC3A3F4E23A54C1B0094F53B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +119,8 @@
 		DC3A3F4B23A54C1B0094F53B /* NoOwe */ = {
 			isa = PBXGroup;
 			children = (
+				DC09D16523AC31AE00C06727 /* NoOwe.entitlements */,
+				DC199F6223AC1DEE00FFBFBF /* Settings.swift */,
 				DC3A3F8223A54CC50094F53B /* Views */,
 				DC3A3F7923A54CC50094F53B /* ViewModels */,
 				DC3A3F6623A54CAE0094F53B /* Models */,
@@ -354,6 +359,7 @@
 				DC3A3F8F23A54CC50094F53B /* RegisterNewUserViewModel.swift in Sources */,
 				DC3A3F9223A54CC50094F53B /* TransactionListView.swift in Sources */,
 				DC3A3F9123A54CC50094F53B /* NewBudgetViewModel.swift in Sources */,
+				DC199F6323AC1DEE00FFBFBF /* Settings.swift in Sources */,
 				DC46FDB523A6A56600DCB9C5 /* Category.swift in Sources */,
 				DC46FDB123A6A42500DCB9C5 /* CreateNewTransactionView.swift in Sources */,
 				DC46FDAE23A551A300DCB9C5 /* KeychainItemAccessibility.swift in Sources */,
@@ -494,6 +500,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NoOwe/NoOwe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"NoOwe/Preview Content\"";
 				DEVELOPMENT_TEAM = 26839986X2;
@@ -514,6 +521,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NoOwe/NoOwe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"NoOwe/Preview Content\"";
 				DEVELOPMENT_TEAM = 26839986X2;

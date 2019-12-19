@@ -10,11 +10,10 @@ import SwiftUI
 
 struct BudgetListView: View {
     @ObservedObject var budgetListViewModel: BudgetListViewModel = BudgetListViewModel()
-    
     @State private var showModal: Bool = false
     
     init(){
-        budgetListViewModel.fetchBudgets()
+        self.budgetListViewModel.fetchBudgets()
     }
     
     var body: some View {
@@ -38,7 +37,19 @@ struct BudgetListView: View {
             }
                 
             .navigationBarTitle("Budgets")
-            .navigationBarItems(trailing:
+            .navigationBarItems(
+                leading:
+                Button(action: {
+                    KeychainWrapper.standard.set("", forKey: "email")
+                    KeychainWrapper.standard.set("", forKey: "password")
+                    KeychainWrapper.standard.set("", forKey: "jwtToken")
+                    KeychainWrapper.standard.set("", forKey: "expiresIn")
+                }){
+                    HStack{
+                        Image(systemName: "minus").foregroundColor(Color.white)
+                    }
+                },
+                trailing:
                 HStack{
                     Button(action:{
                         self.budgetListViewModel.fetchBudgets()

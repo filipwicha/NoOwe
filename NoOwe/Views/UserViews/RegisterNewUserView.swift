@@ -19,13 +19,14 @@ struct RegisterNewUserView: View {
                     Section(
                     header: Text("Enter email address")) {
                         TextField("email@email.com", text: self.$registerNewUserVM.email)
+                            .textContentType(.username)
                     }
                     Section(
                         header: Text("Enter password"),
                         footer: Text(self.registerNewUserVM.message)
                     ){
-                        SecureField("password", text: self.$registerNewUserVM.password)
-                        SecureField("re-enter password", text: self.$registerNewUserVM.repeatedPassword)
+                        SecureField("password", text: self.$registerNewUserVM.password).textContentType(.newPassword)
+                        SecureField("re-enter password", text: self.$registerNewUserVM.repeatedPassword).textContentType(.newPassword)
                     }
                 }
             }

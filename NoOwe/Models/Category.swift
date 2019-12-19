@@ -12,4 +12,5 @@ struct Category: Codable, Identifiable {
     
     let id: Int
     let photo: String
+    let emoji: String
 }
