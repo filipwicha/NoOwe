@@ -14,11 +14,12 @@ struct CreateNewTransactionView: View {
     @ObservedObject var newTransactionVM: NewTransactionViewModel
     let maxHeight: CGFloat = 400
     var currencySymbol: String
+    var categories: [CategoryViewModel] = []
     
-    init(budget: BudgetViewModel, budgetMemberListVM: BudgetMemberListViewModel, currencySymbol: String){
+    init(budget: BudgetViewModel, budgetMemberListVM: BudgetMemberListViewModel, currencySymbol: String, categories: [CategoryViewModel]){
         self.newTransactionVM = NewTransactionViewModel(budgetVM: budget, budgetMemberListVM: budgetMemberListVM)
         self.currencySymbol = currencySymbol
-        
+        self.categories = categories
     }
     
     var body: some View {
@@ -74,11 +75,10 @@ struct CreateNewTransactionView: View {
                 }.frame(width: 200, height: 200)
                     .padding(.bottom, 10)
                 
-                Text(" ")
                 Picker(selection: self.$newTransactionVM.category, label: Text("Category"))
                 {
-                    ForEach(self.newTransactionVM.categories) { category in
-                        Text(self.newTransactionVM.caregoriesEmojis[category.id])
+                    ForEach(self.categories) { category in
+                        Text(self.stringToEmoji(s: category.emoji))
                             .tag(category.id)
                     }
                 }.pickerStyle(SegmentedPickerStyle())
@@ -201,7 +201,15 @@ struct CreateNewTransactionView: View {
     static var g3Start = Color(red: 139.0 / 255, green: 147.0 / 255, blue: 154.0 / 255)
     static var g3End = Color(red: 91.0 / 255, green: 100.0 / 255, blue: 103.0 / 255)
     
-    
+    func emojiToString(s: String) -> String {
+        let data = s.data(using: .nonLossyASCII, allowLossyConversion: true)!
+        return String(data: data, encoding: .utf8)!
+    }
+
+    func stringToEmoji(s: String) -> String {
+        let data = s.data(using: .utf8)!
+        return String(data: data, encoding: .nonLossyASCII)!
+    }
     
     func GT(t: TypeOfShares ) -> Double{
         if t == .p {
@@ -253,7 +261,7 @@ enum TypeOfShares {
 
 struct CreateNewTransactionView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateNewTransactionView(budget: BudgetViewModel(budget: Budget(id: 0, name: "XD", color: "111,222,111", owner_id: -1, currency_id: 1)), budgetMemberListVM: BudgetMemberListViewModel(), currencySymbol: "$")
+        CreateNewTransactionView(budget: BudgetViewModel(budget: Budget(id: 0, name: "XD", color: "111,222,111", owner_id: -1, currency_id: 1)), budgetMemberListVM: BudgetMemberListViewModel(), currencySymbol: "$", categories: [CategoryViewModel(category: Category(id: 0, photo: "Animals", emoji: "\\ud83d\\udc36"))])
     }
 }
 

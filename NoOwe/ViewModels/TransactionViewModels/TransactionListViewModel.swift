@@ -14,13 +14,14 @@ class TransactionListViewModel: ObservableObject {
     @Published var budgetMemberListVM: BudgetMemberListViewModel
     
     var budget: BudgetViewModel
-    
+    var categories: [CategoryViewModel] = []
     init(budget: BudgetViewModel){
         self.budget = budget
         self.budgetMemberListVM = BudgetMemberListViewModel()
         self.budgetMemberListVM.fetchBudgetMembers(budgetId: self.budget.id)
 //        fetchThisBudgetMemberId()
         fetchTransactions()
+        fetchCategories()
     }
     
     func getTransactionTotal(id: Int) -> Double {
@@ -54,6 +55,19 @@ class TransactionListViewModel: ObservableObject {
                 
             case .success(_):
                 print("Deleted budget")
+            case .failure(let error):
+                print("Error " + error.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchCategories(){
+        
+        WebService().getCategories { response in
+            switch response {
+                
+            case .success(let currencies):
+                self.categories = currencies.map(CategoryViewModel.init)
             case .failure(let error):
                 print("Error " + error.localizedDescription)
             }

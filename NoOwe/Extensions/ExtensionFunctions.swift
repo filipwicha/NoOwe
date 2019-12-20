@@ -15,16 +15,6 @@ extension String {
         
         return dateFormatter.date(from: self) ?? Date(timeIntervalSince1970: 0)
     }
-    
-    func emojiToString(_ s: String) -> String {
-        let data = s.data(using: .nonLossyASCII, allowLossyConversion: true)!
-        return String(data: data, encoding: .utf8)!
-    }
-
-    func stringToEmoji(_ s: String) -> String? {
-        let data = s.data(using: .utf8)!
-        return String(data: data, encoding: .nonLossyASCII)
-    }
 }
 
 extension Date {

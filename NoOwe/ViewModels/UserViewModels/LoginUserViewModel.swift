@@ -21,7 +21,7 @@ class LoginUserViewModel: ObservableObject {
         let dateString: String? = KeychainWrapper.standard.string(forKey: "expiresIn")
         if dateString != nil && dateString != "" {
             if dateString!.toDate() > Date() {
-                self.loginCompleated = false
+                self.loginCompleated = true
             }
         }
     }

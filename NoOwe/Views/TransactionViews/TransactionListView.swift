@@ -24,62 +24,82 @@ struct TransactionListView: View {
     }
     
     var body: some View {
-        GeometryReader { geometry in
-            List{
-                Section{
-                    VStack{
-                        Text("Summary")
-                        ForEach(self.transactionListVM.budgetMemberListVM.budgetMembers){ budgetMember in
-                            HStack {
-                                Text(budgetMember.nickname)
-                                Text("\(self.getTotalOwe(budgetMemberId: budgetMember.id), specifier: "%.2f") \(self.currencyDownload.currencies.filter {$0.id == self.budget.currencyId}[0].code)")
-                            }
+        List{
+            Section{
+                VStack{
+                    Text("Summary")
+                    ForEach(self.transactionListVM.budgetMemberListVM.budgetMembers){ budgetMember in
+                        HStack {
+                            Text(budgetMember.nickname)
+                            Text("\(self.getTotalOwe(budgetMemberId: budgetMember.id), specifier: "%.2f") \(self.currencyDownload.currencies.filter {$0.id == self.budget.currencyId}[0].code)")
                         }
                     }
                 }
-                Section{
-                    Button(action:{
-                        self.showNewTransactionModal()
-                    }){
-                        HStack{
-                            Spacer()
-                            Image(systemName: "plus").resizable().frame(width: 30, height: 30)
-                        }
-                        .padding(12)
-                    }.frame(width: geometry.size.width-30, height: 50)
-                    
-                    ForEach(self.transactionListVM.transactions){ transaction in
-                        HStack(alignment: .center){
-                            ZStack(alignment: .leading){
-                                RoundedRectangle(cornerRadius: 15)
-                                    .stroke(self.getColor(colorString: self.budget.color), lineWidth: 10)
-                                
-                                HStack {
-                                    Text(transaction.title).font(.headline).padding(20)
-                                    Spacer()
-                                    VStack{
-                                        Text("\(self.transactionListVM.getTransactionTotal(id: transaction.id), specifier: "%.2f") \(self.currencyDownload.currencies.filter {$0.id == self.budget.currencyId}[0].code)").font(.title).bold().padding(20)
-                                        //  Image(systemName: transaction.categoryId)
-                                    }
-                                }
-                            }.frame(width: geometry.size.width-30, height: 140)
-                        }
-                    }
-                }
-                
-            }.sheet(isPresented: self.$showModal){
-                CreateNewTransactionView(budget: self.budget, budgetMemberListVM: self.transactionListVM.budgetMemberListVM, currencySymbol: self.currencyDownload.currencies.filter {$0.id == self.budget.currencyId}[0].code)
             }
-                
-            .navigationBarTitle("\(self.budget.name)")
-            .navigationBarItems(trailing:
+            Section{
+                ForEach(self.transactionListVM.transactions){ transaction in
+                    ZStack{
+                        Rectangle()
+                            .fill(.gray)
+                        
+                        VStack {
+                            Image(self.transactionListVM.categories.filter { $0.id == transaction.categoryId }[0].photo)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                            
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text("\(self.transactionListVM.getTransactionTotal(id: transaction.id), specifier: "%.2f") \(self.currencyDownload.currencies.filter {$0.id == self.budget.currencyId}[0].code)")
+                                        .font(.headline)
+                                        .foregroundColor(.secondary)
+                                    Text(transaction.title)
+                                        .font(.title)
+                                        .fontWeight(.black)
+                                        .foregroundColor(.primary)
+                                        .lineLimit(3)
+                                    Text(self.transactionListVM.categories.filter { $0.id == transaction.categoryId }[0].photo)
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                }
+                                .layoutPriority(100)
+                                
+                                Spacer()
+                            }
+                            .padding()
+                        }
+                        .cornerRadius(10)
+                        //                    .overlay(
+                        //                        RoundedRectangle(cornerRadius: 10)
+                        //                            .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.1), linewidth: 1)
+                        //                    )
+                        //                        .padding([.top, .horizontal])
+                    }
+                }
+            }
+            
+        }.sheet(isPresented: self.$showModal){
+            CreateNewTransactionView(budget: self.budget, budgetMemberListVM: self.transactionListVM.budgetMemberListVM, currencySymbol: self.currencyDownload.currencies.filter {$0.id == self.budget.currencyId}[0].code, categories: self.transactionListVM.categories)
+        }
+            
+        .navigationBarTitle("\(self.budget.name)")
+        .navigationBarItems(trailing:
+            HStack{
                 Button(action:{
                     self.transactionListVM.fetchTransactions()
                 }){
                     Image(systemName: "arrow.clockwise").foregroundColor(Color.white)
                 }
-            )
-        }
+                Button(action:{
+                self.showNewTransactionModal()
+                }){
+                    HStack{
+                        Spacer()
+                        Image(systemName: "plus").resizable().frame(width: 30, height: 30)
+                    }
+                }
+            }
+        )
+        
     }
     
     func setNavigationBarColor(colorString: String){
