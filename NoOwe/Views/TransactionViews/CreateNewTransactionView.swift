@@ -111,7 +111,8 @@ struct CreateNewTransactionView: View {
                                                 
                                                 Text(" \(self.currencySymbol)").foregroundColor(.gray).font(.title)
                                                 Text("  ")
-                                            }.overlay(RoundedRectangle(cornerRadius: 2) .stroke(Color.gray, lineWidth: 1)).padding(.bottom, 5)
+                                            }.overlay(RoundedRectangle(cornerRadius: 2)
+                                                .stroke(Color.gray, lineWidth: 1)).padding(.bottom, 5)
                                         }
                                     }
                                 }.padding(.bottom, 3)
@@ -141,10 +142,11 @@ struct CreateNewTransactionView: View {
                             HStack{
                                 HStack{
                                     Spacer()
-                                    TextField( "\"Chips\"", text: self.$newTransactionVM.title)
+                                    TextField( "\"Uber\", \"Tea\" ...", text: self.$newTransactionVM.title)
                                         .font(.title)
                                     Spacer()
-                                }.overlay(RoundedRectangle(cornerRadius: 2) .stroke(Color.gray, lineWidth: 1)).padding(.bottom, 5)
+                                }.overlay(RoundedRectangle(cornerRadius: 2)
+                                    .stroke(Color.gray, lineWidth: 1)).padding(.bottom, 5)
                             }
                         }
                         .frame(width: (geometry.size.width)/2, height: self.maxHeight, alignment: .topLeading)
@@ -177,10 +179,14 @@ struct CreateNewTransactionView: View {
                                                     .keyboardType(.decimalPad)
                                                     .font(.title)
                                                 
-                                                Text(" \(self.currencySymbol)").foregroundColor(.gray).font(.title)
+                                                Text(" \(self.currencySymbol)")
+                                                    .foregroundColor(.gray).font(.title)
                                                 Text("  ")
-                                            }.overlay(RoundedRectangle(cornerRadius: 2) .stroke(Color.gray, lineWidth: 1)).padding(.bottom, 5)
-                                            Text("               ").foregroundColor(.gray).font(.title)
+                                            }.overlay(
+                                                RoundedRectangle(cornerRadius: 2)
+                                                .stroke(Color.gray, lineWidth: 1)).padding(.bottom, 5)
+                                            Text("               ")
+                                                .foregroundColor(.gray).font(.title)
                                         }
                                     }
                                 }.padding(.bottom, 3)

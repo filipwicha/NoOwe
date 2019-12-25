@@ -34,20 +34,14 @@ struct TransactionListView: View {
             }
             
             List{
-                Text("test")
                 ForEach(self.transactionListVM.transactions) { transaction in
                     
                     Section{
-                        ZStack{
-                            Text("AAA")
-//                            Rectangle()
-//                                .fill(.gray)
-                            
                             VStack {
                                 Image(self.transactionListVM.categories.filter { $0.id == transaction.categoryId }[0].photo)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-
+                                
                                 HStack {
                                     VStack(alignment: .leading) {
                                         Text("\(self.transactionListVM.getTransactionTotal(id: transaction.id), specifier: "%.2f") \(self.currencyDownload.currencies.filter {$0.id == self.budget.currencyId}[0].code)")
@@ -61,15 +55,15 @@ struct TransactionListView: View {
                                         Text(self.transactionListVM.categories.filter { $0.id == transaction.categoryId }[0].photo)
                                             .font(.caption)
                                             .foregroundColor(.secondary)
+
                                     }
                                     .layoutPriority(100)
-
                                     Spacer()
                                 }
+                                .clipped()
                                 .padding()
                             }
                             .cornerRadius(10)
-                        }
                     }
                 }
             }
@@ -85,20 +79,18 @@ struct TransactionListView: View {
                 Button(action:{
                     self.transactionListVM.fetchTransactions()
                 }){
-                    Image(systemName: "arrow.clockwise").foregroundColor(Color.white)
+                    Image(systemName: "arrow.clockwise").padding(12)
                 }
                 Button(action:{
                     self.showNewTransactionModal()
                 }){
-                    HStack{
-                        Spacer()
-                        Image(systemName: "plus").foregroundColor(Color.white)
-                    }
-                    .padding(12)
+                    Image(systemName: "plus").padding(12)
+                    
                 }
-            }
+            }.foregroundColor(Color.white).frame(width: 70, height: 70)
         )
     }
+    
     func setNavigationBarColor(colorString: String){
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         UINavigationBar.appearance().backgroundColor = getColor(colorString: colorString)

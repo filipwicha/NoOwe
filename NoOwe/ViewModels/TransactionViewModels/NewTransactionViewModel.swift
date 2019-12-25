@@ -15,9 +15,6 @@ class NewTransactionViewModel: ObservableObject {
     @Published var title: String = ""
     @Published var category: Int = 0
     
-    @Published var sharesPositive: [ShareViewModel] = [] //how much did somebody pay
-    @Published var sharesNegative: [ShareViewModel] = [] //how much somebody owes
-    
     @Published var shares: [(memberId: Int, nickname: String, positive: String, negative: String)] = []
     
     @Published var categories: [CategoryViewModel] = []
@@ -38,13 +35,14 @@ class NewTransactionViewModel: ObservableObject {
     }
     
     func addNewTransaction() {
+        var shareViewModels: [ShareViewModel] = []
         
         self.shares.forEach { share in
             let sharePositiveValue: Double = Double(share.positive) ?? 0.0
-            let shareNegativeValue: Double = Double(share.positive) ?? 0.0
+            let shareNegativeValue: Double = Double(share.negative) ?? 0.0
             
-            sharesPositive.append(ShareViewModel(share: Share(id: -1, amount: sharePositiveValue, member_id: share.memberId, transaction_id: -1)))
-            sharesNegative.append(ShareViewModel(share: Share(id: -1, amount: shareNegativeValue * -1, member_id: share.memberId, transaction_id: -1)))
+            shareViewModels.append(ShareViewModel(share: Share(id: -1, amount: sharePositiveValue, member_id: share.memberId, transaction_id: -1)))
+            shareViewModels.append(ShareViewModel(share: Share(id: -1, amount: shareNegativeValue * -1, member_id: share.memberId, transaction_id: -1)))
         }
         
         self.webService.createNewTransaction(newTransaction: Transaction(
@@ -53,7 +51,7 @@ class NewTransactionViewModel: ObservableObject {
             date: Date(),
             budget_id: budgetVM.id,
             category_id: self.categories.filter { $0.id == self.category }[0].id,
-            shares: sharesPositive.map {$0.share} + sharesNegative.map {$0.share}
+            shares: shareViewModels.map {$0.share}
             ))
         { response in
             switch response {
@@ -66,30 +64,6 @@ class NewTransactionViewModel: ObservableObject {
             }
         }
     }
-    
-//    func getBudgetMemberNickname(budgetMemberId: Int) -> String {
-//        var nickname:String = "Error"
-//        self.budgetMembers.forEach{ budgetMember in
-//            if budgetMember.id == budgetMemberId{
-//                nickname = budgetMember.nickname
-//            }
-//        }
-//
-//        return nickname
-//    }
-//
-//    func createTemplateShares() {
-//        var id: Int = -1
-//        budgetMembers.forEach { budgetMember in
-//            self.sharesPositive.append(
-//                ShareViewModel(share: Share(id: self.sharesPositive.count, amount: 0.0, member_id: budgetMember.id, transaction_id: -1))
-//            )
-//            self.sharesNegative.append(
-//                ShareViewModel(share: Share(id: self.sharesNegative.count, amount: 0.0, member_id: budgetMember.id, transaction_id: -1))
-//            )
-//            id -= 1
-//        }
-//    }
     
     func fetchCategories(){
         

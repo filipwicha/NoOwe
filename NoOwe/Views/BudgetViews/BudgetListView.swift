@@ -22,15 +22,29 @@ struct BudgetListView: View {
                 List {
                     ForEach(self.budgetListViewModel.budgets){ budget in
                         NavigationLink(destination: TransactionListView(budget: budget)){
-                            HStack{
-                                ZStack{
-                                    Circle()
-                                        .fill(self.getColor(colorString: budget.color))
-                                    Text(budget.name.prefix(1)).bold().font(.largeTitle)
-                                }.frame(width: 80, height: 80)
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 15).fill(
+                                    LinearGradient(gradient: Gradient(colors: [
+                                            self.getColor(colorString: "40,49,59"),
+                                            self.getColor(colorString: "72,84,97")
+                                        ]), startPoint: .top, endPoint: .bottom)
+                                )
                                 
-                                Text(budget.name).font(.title).bold().padding(12)
-                            }
+                                HStack{
+                                    
+                                    ZStack{
+                                        Circle()
+                                            .fill(self.getColor(colorString: budget.color))
+                                            .shadow(radius: 10)
+                                        Text(budget.name.prefix(1)).bold().font(.largeTitle)
+                                    }
+                                    .frame(width: 80, height: 80)
+                                    
+                                    Spacer()
+                                    
+                                    Text(budget.name).font(.title).bold().padding(12)
+                                }.padding(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
+                            }.padding(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
                         }
                     }
                 }
