@@ -19,7 +19,6 @@ class TransactionListViewModel: ObservableObject {
         self.budget = budget
         self.budgetMemberListVM = BudgetMemberListViewModel()
         self.budgetMemberListVM.fetchBudgetMembers(budgetId: self.budget.id)
-//        fetchThisBudgetMemberId()
         fetchTransactions()
         fetchCategories()
     }
@@ -73,18 +72,6 @@ class TransactionListViewModel: ObservableObject {
             }
         }
     }
-    
-//    func fetchThisBudgetMemberId() {
-//        WebService().getThisBudgetMemberId(budgetId: self.budget.id) { response in
-//            switch response {
-//
-//            case .success(let budgetMember):
-//                self.budgetMemberListVM = BudgetMemberListViewModel(budgetMember: budgetMember)
-//            case .failure(let error):
-//                print("Error " + error.localizedDescription)
-//            }
-//        }
-//    }
 }
 
 class TransactionViewModel: Identifiable {

@@ -28,6 +28,18 @@ class BudgetListViewModel: ObservableObject {
             }
         }
     }
+    
+    func becomeMember(privateKey: String){
+        WebService().becomeMemberOfBudget(privateKey: privateKey) { response in
+            switch response {
+                
+            case .success(_):
+                print("Became a member")
+            case .failure(let error):
+                print("Error " + error.localizedDescription)
+            }
+        }
+    }
 }
 
 class BudgetViewModel: Identifiable {

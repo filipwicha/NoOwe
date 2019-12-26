@@ -32,8 +32,6 @@ struct CreateNewBudgetView: View {
                                         .foregroundColor(self.getColor(colorString: self.newBudgetVM.colors[$0]))
                                 }
                             }
-                            //                            .pickerStyle(SegmentedPickerStyle())
-                            
                         }
                         
                         Section(

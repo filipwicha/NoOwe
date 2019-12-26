@@ -12,6 +12,9 @@ struct BudgetListView: View {
     @ObservedObject var budgetListViewModel: BudgetListViewModel = BudgetListViewModel()
     @State private var showModal: Bool = false
     
+    @State private var askForKey: Bool = false
+    @State private var privateKey: String = ""
+    
     init(){
         self.budgetListViewModel.fetchBudgets()
     }
@@ -20,6 +23,19 @@ struct BudgetListView: View {
         NavigationView{
             VStack{
                 List {
+                    if askForKey {
+                        HStack{
+                            TextField("Enter code from friend", text: self.$privateKey)
+                            Button(action:{
+                                self.budgetListViewModel.becomeMember(privateKey: self.privateKey)
+                                self.askForKey.toggle()
+                                self.budgetListViewModel.fetchBudgets()
+//                                self.privateKey = ""
+                            }){
+                                Image(systemName: "hand.thumbsup").padding(15)
+                            }
+                        }
+                    }
                     ForEach(self.budgetListViewModel.budgets){ budget in
                         NavigationLink(destination: TransactionListView(budget: budget)){
                             ZStack{
@@ -31,7 +47,6 @@ struct BudgetListView: View {
                                 )
                                 
                                 HStack{
-                                    
                                     ZStack{
                                         Circle()
                                             .fill(self.getColor(colorString: budget.color))
@@ -55,6 +70,11 @@ struct BudgetListView: View {
                 trailing:
                 HStack{
                     Button(action:{
+                        self.askForKey.toggle()
+                    }){
+                        Image(systemName: "person.badge.plus").padding(15)
+                    }
+                    Button(action:{
                         self.budgetListViewModel.fetchBudgets()
                     }){
                         Image(systemName: "arrow.clockwise").padding(15)
@@ -65,7 +85,7 @@ struct BudgetListView: View {
                         Image(systemName: "plus").padding(15)
                         
                     }
-                }
+                }.foregroundColor(Color.white)
             )
         }.sheet(isPresented: self.$showModal,
                 onDismiss: { self.budgetListViewModel.fetchBudgets() }

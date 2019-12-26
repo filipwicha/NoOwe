@@ -224,41 +224,6 @@ class WebService {
         }.resume()
     }
     
-    func getThisBudgetMemberId(budgetId: Int, completion: @escaping (Result<BudgetMember, Error>) -> ()){
-        guard let url = URL(string: baseURL + "/budget_member/this/\(budgetId)") else {
-            //completion(.failure(fatalError("Wrong url")))
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.addValue(getToken(), forHTTPHeaderField: "x-access-token")
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            
-            guard let data = data, error == nil else {
-                DispatchQueue.main.async {
-                    completion(.failure(error!))
-                    print("Error getting this budget member id " + error!.localizedDescription )
-                }
-                return
-            }
-            
-            DispatchQueue.main.async {
-                do {
-                    let response = try self.jsonDecoder.decode(BudgetMember.self, from: data)
-                    completion(.success(response))
-                    print("Got this budget member correctly \(self.getId())" )
-                } catch let error {
-                    completion(.failure(error))
-                    print("Error parsing json to this budget member id" )
-                    
-                    return
-                }
-            }
-        }.resume()
-    }
-    
     func getBudgetMembers(budgetId: Int, completion: @escaping (Result<[BudgetMember], Error>) -> ()){
         guard let url = URL(string: baseURL + "/budget_members/\(budgetId)") else {
             //completion(.failure(fatalError("Wrong url")))
@@ -388,6 +353,40 @@ class WebService {
                 completion(.success("Deleted budget"))
             }
         }
+    }
+    
+    func becomeMemberOfBudget (privateKey: String, completion: @escaping (Result<String, Error>) -> ()) {
+        guard let url = URL(string: baseURL + "/budget_member/\(privateKey)") else {
+            //completion(.failure(fatalError("Wrong url")))
+            print("error in url")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue(getToken(), forHTTPHeaderField: "x-access-token")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            guard let _ = data, error == nil else {
+                DispatchQueue.main.async {
+                    completion(.failure(error!))
+                    print("Error becoming member" + error!.localizedDescription )
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                do {
+                    completion(.success("Became a budgetMember"))
+                    print("Became a member" )
+                } catch let error {
+                    completion(.failure(error))
+                    
+                    return
+                }
+            }
+        }.resume()
     }
     
     func getToken() -> String {
