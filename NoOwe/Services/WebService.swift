@@ -9,7 +9,7 @@
 import Foundation
 
 class WebService {
-    let baseURL: String = "https:noowe.herokuapp.com"
+    let baseURL: String = "https://noowe.herokuapp.com"
     
     init(){
         
@@ -352,7 +352,7 @@ class WebService {
             DispatchQueue.main.async {
                 completion(.success("Deleted budget"))
             }
-        }
+        }.resume()
     }
     
     func deleteTransaction(transactionId: Int, completion: @escaping (Result<String, Error>) -> ()){
@@ -368,8 +368,8 @@ class WebService {
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard let _ = data, error == nil else {
                 DispatchQueue.main.async {
-                    completion(.failure(error!))
                     print("Deleted transaction error " + error!.localizedDescription )
+                    completion(.failure(error!))
                 }
                 return
             }
@@ -377,7 +377,7 @@ class WebService {
             DispatchQueue.main.async {
                 completion(.success("Deleted transaction"))
             }
-        }
+        }.resume()
     }
     
     func becomeMemberOfBudget (privateKey: String, completion: @escaping (Result<String, Error>) -> ()) {

@@ -79,6 +79,7 @@ struct TransactionListView: View {
                                     .contextMenu {
                                         Button(action: {
                                             self.transactionListVM.deleteTransaction(transactionId: transaction.id)
+                                            self.transactionListVM.fetchTransactions()
                                         }) {
                                             HStack {
                                                 Text("Delete")

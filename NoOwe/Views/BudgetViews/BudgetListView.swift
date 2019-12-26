@@ -47,6 +47,7 @@ struct BudgetListView: View {
                                 ).contextMenu {
                                     Button(action: {
                                         self.budgetListViewModel.deleteBudget(budgetId: budget.id)
+                                        self.budgetListViewModel.fetchBudgets()
                                     }) {
                                         HStack {
                                             Text("Delete")
