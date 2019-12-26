@@ -39,7 +39,7 @@ class BudgetMemberViewModel: Identifiable {
     }
     
     init(){
-        self.budgetMember = BudgetMember(id: -1, nickname: "Wrong", user_id: -1, budget_id: -1)
+        self.budgetMember = BudgetMember(id: -1, nickname: "Wrong", user_id: -1, budget_id: -1, private_key: "")
     }
     
     var id: Int {
@@ -56,6 +56,10 @@ class BudgetMemberViewModel: Identifiable {
     
     var budgetId: Int {
         return self.budgetMember.budget_id
+    }
+    
+    var privateKey: String {
+        return self.budgetMember.private_key
     }
 }
 

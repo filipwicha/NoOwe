@@ -14,4 +14,5 @@ struct BudgetMember: Codable, Identifiable {
     let nickname: String
     let user_id: Int
     let budget_id: Int
+    let private_key: String
 }

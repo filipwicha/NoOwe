@@ -52,31 +52,18 @@ struct BudgetListView: View {
                 
             .navigationBarTitle("Budgets")
             .navigationBarItems(
-                leading:
-                Button(action: {
-                    KeychainWrapper.standard.set("", forKey: "email")
-                    KeychainWrapper.standard.set("", forKey: "password")
-                    KeychainWrapper.standard.set("", forKey: "jwtToken")
-                    KeychainWrapper.standard.set("", forKey: "expiresIn")
-                }){
-                    HStack{
-                        Image(systemName: "minus").foregroundColor(Color.white)
-                    }
-                },
                 trailing:
                 HStack{
                     Button(action:{
                         self.budgetListViewModel.fetchBudgets()
                     }){
-                        Image(systemName: "arrow.clockwise").foregroundColor(Color.white)
+                        Image(systemName: "arrow.clockwise").padding(15)
                     }
-                    Text("  ")
                     Button(action:{
                         self.showNewBudgetModal()
                     }){
-                        HStack{
-                            Image(systemName: "plus").foregroundColor(Color.white)
-                        }
+                        Image(systemName: "plus").padding(15)
+                        
                     }
                 }
             )
