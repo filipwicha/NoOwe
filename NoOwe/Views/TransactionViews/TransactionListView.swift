@@ -25,68 +25,79 @@ struct TransactionListView: View {
     
     var body: some View {
         VStack{
-            Text(self.showKeys ? "Add to budget" : "Summary")
-            ForEach(self.transactionListVM.budgetMemberListVM.budgetMembers){ budgetMember in
-                
-                HStack {
-                    Text(budgetMember.nickname).frame(width: 170 , height: 50)
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 10).fill(
-                            self.isNotOwing(budgetMemberId: budgetMember.id) ?
-                                
-                                LinearGradient(gradient: Gradient(colors: [
-                                    self.getColor(colorString: "35,51,41"),
-                                    self.getColor(colorString: "99,212,112")
-                                ]), startPoint: .top, endPoint: .bottom)
-                                
-                                :
-                                
-                                LinearGradient(gradient: Gradient(colors: [
-                                    self.getColor(colorString: "164,6,6"),
-                                    self.getColor(colorString: "217,130,36")
-                                ]), startPoint: .top, endPoint: .bottom)
-                        )
-                        self.showKeys ?
-                            Text(budgetMember.privateKey)
-                            :
-                            Text("\(self.getTotalOwe(budgetMemberId: budgetMember.id), specifier: "%.2f") \(self.currencyDownload.currencies.filter {$0.id == self.budget.currencyId}[0].code)")
-                    }
-                    .frame(width: 170, height: 30)
-                }.padding(2)
-            }
-            
             List{
-                ForEach(self.transactionListVM.transactions) { transaction in
-                    Section{
-                        VStack {
-                            Image(self.transactionListVM.categories.filter{ $0.id == transaction.categoryId }[0].photo)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                            
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text("\(self.transactionListVM.getTransactionTotal(id: transaction.id), specifier: "%.2f") \(self.currencyDownload.currencies.filter{$0.id == self.budget.currencyId}[0].code)")
-                                        .font(.headline)
-                                        .foregroundColor(.secondary)
-                                    Text(transaction.title)
-                                        .font(.title)
-                                        .fontWeight(.black)
-                                        .foregroundColor(.primary)
-                                        .lineLimit(3)
-                                    Text(self.transactionListVM.categories.filter{ $0.id == transaction.categoryId }[0].photo)
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                    
-                                }
-                                .layoutPriority(100)
-                                Spacer()
+                VStack{
+                    Text(self.showKeys ? "Add to budget" : "Summary")
+                    ForEach(self.transactionListVM.budgetMemberListVM.budgetMembers){ budgetMember in
+                        
+                        HStack {
+                            Text(budgetMember.nickname).frame(width: 170 , height: 50)
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 10).fill(
+                                    self.isNotOwing(budgetMemberId: budgetMember.id) ?
+                                        
+                                        LinearGradient(gradient: Gradient(colors: [
+                                            self.getColor(colorString: "35,51,41"),
+                                            self.getColor(colorString: "99,212,112")
+                                        ]), startPoint: .top, endPoint: .bottom)
+                                        
+                                        :
+                                        
+                                        LinearGradient(gradient: Gradient(colors: [
+                                            self.getColor(colorString: "164,6,6"),
+                                            self.getColor(colorString: "217,130,36")
+                                        ]), startPoint: .top, endPoint: .bottom)
+                                )
+                                self.showKeys ?
+                                    Text(budgetMember.privateKey)
+                                    :
+                                    Text("\(self.getTotalOwe(budgetMemberId: budgetMember.id), specifier: "%.2f") \(self.currencyDownload.currencies.filter {$0.id == self.budget.currencyId}[0].code)")
                             }
-                            .clipped()
-                            .padding()
-                        }
-                        .background(self.getColor(colorString: "36,36,36"))
-                        .cornerRadius(10)
+                            .frame(width: 170, height: 30)
+                        }.padding(2)
                     }
+                }
+                
+                ForEach(self.transactionListVM.transactions) { transaction in
+                    
+                    VStack {
+                        
+                        Image(self.transactionListVM.categories.filter{ $0.id == transaction.categoryId }[0].photo)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                        
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("\(self.transactionListVM.getTransactionTotal(id: transaction.id), specifier: "%.2f") \(self.currencyDownload.currencies.filter{$0.id == self.budget.currencyId}[0].code)")
+                                    .font(.headline)
+                                    .foregroundColor(.secondary)
+                                Text(transaction.title)
+                                    .font(.title)
+                                    .fontWeight(.black)
+                                    .foregroundColor(.primary)
+                                    .lineLimit(3)
+                                    .contextMenu {
+                                        Button(action: {
+                                            self.transactionListVM.deleteTransaction(transactionId: transaction.id)
+                                        }) {
+                                            HStack {
+                                                Text("Delete")
+                                                Image(systemName: "trash")
+                                            }
+                                        }
+                                    }
+                                Text(self.transactionListVM.categories.filter{ $0.id == transaction.categoryId }[0].photo)
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                
+                            }
+                            .layoutPriority(100)
+                            Spacer()
+                        }
+                        .padding()
+                    }
+                    .background(self.getColor(colorString: "36,36,36"))
+                    .cornerRadius(10)
                 }
             }
         }

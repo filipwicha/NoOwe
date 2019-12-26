@@ -28,6 +28,18 @@ class BudgetMemberListViewModel: ObservableObject {
             }
         }
     }
+    
+    func deleteBudget(budgetId: Int){
+        WebService().deleteBudget(budgetId: budgetId) { response in
+            switch response {
+                
+            case .success(_):
+                print("Deleted budget")
+            case .failure(let error):
+                print("Error " + error.localizedDescription)
+            }
+        }
+    }
 }
 
 class BudgetMemberViewModel: Identifiable {

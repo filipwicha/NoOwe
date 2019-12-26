@@ -44,7 +44,16 @@ struct BudgetListView: View {
                                             self.getColor(colorString: "40,49,59"),
                                             self.getColor(colorString: "72,84,97")
                                         ]), startPoint: .top, endPoint: .bottom)
-                                )
+                                ).contextMenu {
+                                    Button(action: {
+                                        self.budgetListViewModel.deleteBudget(budgetId: budget.id)
+                                    }) {
+                                        HStack {
+                                            Text("Delete")
+                                            Image(systemName: "trash")
+                                        }
+                                    }
+                                }
                                 
                                 HStack{
                                     ZStack{

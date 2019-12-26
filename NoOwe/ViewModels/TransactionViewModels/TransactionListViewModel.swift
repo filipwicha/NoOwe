@@ -48,12 +48,12 @@ class TransactionListViewModel: ObservableObject {
         }
     }
     
-    func deleteBudget(budgetId: Int){
-        WebService().deleteBudget(budgetId: budgetId) { response in
+    func deleteTransaction(transactionId: Int){
+        WebService().deleteTransaction(transactionId: transactionId) { response in
             switch response {
                 
             case .success(_):
-                print("Deleted budget")
+                print("Deleted transaction")
             case .failure(let error):
                 print("Error " + error.localizedDescription)
             }

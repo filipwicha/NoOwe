@@ -355,6 +355,31 @@ class WebService {
         }
     }
     
+    func deleteTransaction(transactionId: Int, completion: @escaping (Result<String, Error>) -> ()){
+        guard let url = URL(string: baseURL + "/transaction/\(transactionId)") else {
+            //completion(.failure(fatalError("Wrong url")))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.addValue(getToken(), forHTTPHeaderField: "x-access-token")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let _ = data, error == nil else {
+                DispatchQueue.main.async {
+                    completion(.failure(error!))
+                    print("Deleted transaction error " + error!.localizedDescription )
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                completion(.success("Deleted transaction"))
+            }
+        }
+    }
+    
     func becomeMemberOfBudget (privateKey: String, completion: @escaping (Result<String, Error>) -> ()) {
         guard let url = URL(string: baseURL + "/budget_member/\(privateKey)") else {
             //completion(.failure(fatalError("Wrong url")))
