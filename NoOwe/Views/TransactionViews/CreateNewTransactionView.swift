@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-//import KeyboardObserving
 
 struct CreateNewTransactionView: View {
     @Environment(\.presentationMode) var showModal: Binding<PresentationMode>
@@ -65,12 +64,7 @@ struct CreateNewTransactionView: View {
                             } else {
                                 Text("Create").font(.title).foregroundColor(.green)
                             }
-                            
                         }
-                        //                        .disabled(!(self.GT(t:.p)-self.GT(t:.n) == 0 && self.GT(t:.p) > 0 && self.newTransactionVM.title != ""))
-//
-//                        Text("Left to separate:").font(.subheadline)
-//                        Text("\(self.GT(t:.p)-self.GT(t:.n), specifier: "%.2f") \(self.currencySymbol)").font(.headline)
                     }
                 }.frame(width: 200, height: 200)
                     .padding(.bottom, 10)
@@ -127,7 +121,7 @@ struct CreateNewTransactionView: View {
                         Button(action:{}){
                             Image(systemName: "arrowtriangle.right.fill")
                         }
-                        //
+                        
                         VStack{
                             HStack{
                                 Text("for ").font(.title)

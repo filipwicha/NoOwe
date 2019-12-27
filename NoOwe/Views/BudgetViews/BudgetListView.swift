@@ -30,7 +30,7 @@ struct BudgetListView: View {
                                 self.budgetListViewModel.becomeMember(privateKey: self.privateKey)
                                 self.askForKey.toggle()
                                 self.budgetListViewModel.fetchBudgets()
-//                                self.privateKey = ""
+                                self.privateKey = ""
                             }){
                                 Image(systemName: "hand.thumbsup").padding(15)
                             }

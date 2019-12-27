@@ -12,10 +12,6 @@ class BudgetMemberListViewModel: ObservableObject {
 
     @Published var budgetMembers: [BudgetMemberViewModel] = [BudgetMemberViewModel]()
     
-    init(){
-        
-    }
-    
     func fetchBudgetMembers(budgetId: Int) {
         
         WebService().getBudgetMembers(budgetId: budgetId) { response in

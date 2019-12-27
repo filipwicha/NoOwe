@@ -12,8 +12,7 @@ struct LoginView: View {
     @ObservedObject private var loginUserViewModel: LoginUserViewModel = LoginUserViewModel()
     @State private var showModal: Bool = false
     
-    var body: some View {
-        //        ViewConditionedByLogin()
+    var body: some View { 
         Group {
             if loginUserViewModel.loginCompleated {
                 BudgetListView()

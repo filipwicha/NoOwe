@@ -111,7 +111,6 @@ class WebService {
     func login(user: User, completion: @escaping (Result<LoginResponse, Error>) -> ()) {
         
         guard let url = URL(string: baseURL + "/auth/signin") else {
-            //completion(.failure(fatalError("Wrong url")))
             return
         }
         
@@ -157,7 +156,6 @@ class WebService {
     
     func getBudgets(completion: @escaping (Result<[Budget], Error>) -> ()){
         guard let url = URL(string: baseURL + "/budgets") else {
-            //completion(.failure(fatalError("Wrong url")))
             return
         }
         
@@ -192,7 +190,6 @@ class WebService {
     
     func getTransactions(budgetId: Int, completion: @escaping (Result<[Transaction], Error>) -> ()){
         guard let url = URL(string: baseURL + "/transactions/\(budgetId)") else {
-            //completion(.failure(fatalError("Wrong url")))
             return
         }
         
@@ -226,7 +223,6 @@ class WebService {
     
     func getBudgetMembers(budgetId: Int, completion: @escaping (Result<[BudgetMember], Error>) -> ()){
         guard let url = URL(string: baseURL + "/budget_members/\(budgetId)") else {
-            //completion(.failure(fatalError("Wrong url")))
             return
         }
         
@@ -259,10 +255,8 @@ class WebService {
         }.resume()
     }
     
-    
     func getCurrencies(completion: @escaping (Result<[Currency], Error>) -> ()){
         guard let url = URL(string: baseURL + "/currencies") else {
-            //completion(.failure(fatalError("Wrong url")))
             return
         }
         
@@ -297,7 +291,6 @@ class WebService {
     
     func getCategories(completion: @escaping (Result<[Category], Error>) -> ()){
         guard let url = URL(string: baseURL + "/categories") else {
-            //completion(.failure(fatalError("Wrong url")))
             return
         }
         
@@ -332,7 +325,6 @@ class WebService {
     
     func deleteBudget(budgetId: Int, completion: @escaping (Result<String, Error>) -> ()){
         guard let url = URL(string: baseURL + "/budget/\(budgetId)") else {
-            //completion(.failure(fatalError("Wrong url")))
             return
         }
         
@@ -357,7 +349,6 @@ class WebService {
     
     func deleteTransaction(transactionId: Int, completion: @escaping (Result<String, Error>) -> ()){
         guard let url = URL(string: baseURL + "/transaction/\(transactionId)") else {
-            //completion(.failure(fatalError("Wrong url")))
             return
         }
         
@@ -382,7 +373,6 @@ class WebService {
     
     func becomeMemberOfBudget (privateKey: String, completion: @escaping (Result<String, Error>) -> ()) {
         guard let url = URL(string: baseURL + "/budget_member/\(privateKey)") else {
-            //completion(.failure(fatalError("Wrong url")))
             print("error in url")
             return
         }
