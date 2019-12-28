@@ -36,8 +36,8 @@ class LoginUserViewModel: ObservableObject {
 
                 //TODO: set jwt as global
                 print("Login completed -> \(user.email): \(user.password)")
-            case .failure(let error):
-                self.message = error.localizedDescription
+            case .failure(_):
+                self.message = "Wrong credentials or the user does not exist."
             }
         }
     }

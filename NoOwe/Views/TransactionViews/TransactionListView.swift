@@ -26,8 +26,8 @@ struct TransactionListView: View {
     var body: some View {
         VStack{
             List{
-                VStack{
-                    Text(self.showKeys ? "Add to budget" : "Summary")
+                VStack(spacing: 0){
+                    Text(self.showKeys ? "Add to budget:" : "Summary:").font(.title)
                     ForEach(self.transactionListVM.budgetMemberListVM.budgetMembers){ budgetMember in
                         
                         HStack {

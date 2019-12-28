@@ -13,7 +13,7 @@ class RegisterNewUserViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var repeatedPassword: String = ""
     
-    @Published var message = "Fill the form to register"
+    @Published var message = ""
     @Published var validated = false
     @Published var registrationCompleated = false
     

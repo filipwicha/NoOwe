@@ -15,6 +15,18 @@ struct RegisterNewUserView: View {
     var body: some View {
         VStack{
             VStack {
+                HStack(spacing: 0){
+                    Text("Become a").font(.title).bold()
+                    Text(" NoOwe ").foregroundColor(.blue).font(.title).bold()
+                    Text("member").font(.title).bold()
+                    }.padding()
+                
+                VStack(alignment: .leading){
+                    Text("Password should contain at least 8 characters including:")
+                    Text("- capital letter")
+                    Text("- number")
+                }.font(.subheadline).foregroundColor(.gray).opacity(0.6).padding()
+                
                 Form {
                     Section(
                     header: Text("Enter email address")) {
@@ -34,7 +46,7 @@ struct RegisterNewUserView: View {
             Button(action: {
                 self.registerUser()
             }) {
-                self.registerNewUserVM.registrationCompleated ? Text("Login") : Text("Register")
+                ButtonText(text: self.registerNewUserVM.registrationCompleated ? "Login" : "Register")
             }
         }
     }

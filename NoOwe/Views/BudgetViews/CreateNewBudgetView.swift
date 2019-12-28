@@ -71,9 +71,10 @@ struct CreateNewBudgetView: View {
                 Button(action: {
                     self.createBudget()
                 }) {
-                    self.newBudgetVM.creationCompleated ? Text("See budgets") : Text("Create")
+                    ButtonText(text: self.newBudgetVM.creationCompleated ? "See budgets" : "Create")
                 }
             }
+                
             .navigationBarItems(
                 leading:
                 Text(self.newBudgetVM.name == "" ? "New budget" : "Budget: ")

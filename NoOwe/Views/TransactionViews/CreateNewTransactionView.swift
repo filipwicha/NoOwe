@@ -89,7 +89,7 @@ struct CreateNewTransactionView: View {
                             }.padding(.bottom, 10)
                             ForEach(0 ..< self.newTransactionVM.shares.count) { index in
                                 VStack(alignment: .leading){
-                                    VStack {
+                                    VStack (spacing: 0){
                                         HStack{
                                             Spacer()
                                             Text("\(self.newTransactionVM.shares[index].nickname)'s part:").foregroundColor(.gray).font(.footnote)
@@ -112,7 +112,6 @@ struct CreateNewTransactionView: View {
                                 }.padding(.bottom, 3)
                             }
                             
-                            
                             Spacer()
                         }
                         .frame(width: geometry.size.width-140, height: self.maxHeight, alignment: .topLeading)
@@ -122,7 +121,7 @@ struct CreateNewTransactionView: View {
                             Image(systemName: "arrowtriangle.right.fill")
                         }
                         
-                        VStack{
+                        VStack(spacing:0){
                             HStack{
                                 Text("for ").font(.title)
                                 Text( "\(self.newTransactionVM.title == "" ? "***" : self.newTransactionVM.title.lowercased())").font(.title).foregroundColor(.blue)
@@ -160,7 +159,7 @@ struct CreateNewTransactionView: View {
                             }.padding(.bottom, 10)
                             ForEach(0 ..< self.newTransactionVM.shares.count) { index in
                                 VStack(alignment: .leading){
-                                    VStack {
+                                    VStack(spacing: 0) {
                                         HStack{
                                             Spacer()
                                             Text("\(self.newTransactionVM.shares[index].nickname)'s part:").foregroundColor(.gray).font(.footnote)
@@ -198,8 +197,6 @@ struct CreateNewTransactionView: View {
     static var g1End = Color(red: 191.0 / 255, green: 58.0 / 255, blue: 48.0 / 255)
     static var g2Start = Color(red:  161.0 / 255, green: 210.0 / 255, blue: 64.0 / 255)
     static var g2End = Color(red: 27.0 / 255, green: 139.0 / 255, blue: 0.0 / 255)
-    static var g3Start = Color(red: 139.0 / 255, green: 147.0 / 255, blue: 154.0 / 255)
-    static var g3End = Color(red: 91.0 / 255, green: 100.0 / 255, blue: 103.0 / 255)
     
     func emojiToString(s: String) -> String {
         let data = s.data(using: .nonLossyASCII, allowLossyConversion: true)!

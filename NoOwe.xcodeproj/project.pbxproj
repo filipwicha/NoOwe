@@ -42,6 +42,7 @@
 		DC46FDB523A6A56600DCB9C5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46FDB423A6A56600DCB9C5 /* Category.swift */; };
 		DC46FDB723A6BFC400DCB9C5 /* BudgetMemberListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46FDB623A6BFC300DCB9C5 /* BudgetMemberListViewModel.swift */; };
 		DC46FDB923A763F700DCB9C5 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46FDB823A763F600DCB9C5 /* ShareViewModel.swift */; };
+		DCAFADC723B7957600E9DD84 /* ButtonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAFADC623B7957600E9DD84 /* ButtonText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		DC46FDB423A6A56600DCB9C5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DC46FDB623A6BFC300DCB9C5 /* BudgetMemberListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetMemberListViewModel.swift; sourceTree = "<group>"; };
 		DC46FDB823A763F600DCB9C5 /* ShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
+		DCAFADC623B7957600E9DD84 /* ButtonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonText.swift; sourceTree = "<group>"; };
 		DCB59D4823AABFD80058F952 /* Package */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Package; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +148,7 @@
 				DC46FDAC23A551A300DCB9C5 /* KeychainItemAccessibility.swift */,
 				DC46FDAD23A551A300DCB9C5 /* KeychainWrapper.swift */,
 				DC3A3F6423A54C8A0094F53B /* ExtensionFunctions.swift */,
+				DCAFADC623B7957600E9DD84 /* ButtonText.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				DC3A3F7623A54CAE0094F53B /* BudgetMember.swift in Sources */,
 				DC3A3F6F23A54CAE0094F53B /* NewBudget.swift in Sources */,
 				DC46FDAF23A551A300DCB9C5 /* KeychainWrapper.swift in Sources */,
+				DCAFADC723B7957600E9DD84 /* ButtonText.swift in Sources */,
 				DC3A3F9423A54CC50094F53B /* RegisterNewUserView.swift in Sources */,
 				DC3A3F7123A54CAE0094F53B /* User.swift in Sources */,
 				DC3A3F7423A54CAE0094F53B /* Share.swift in Sources */,

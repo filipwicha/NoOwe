@@ -12,9 +12,9 @@ struct LoginView: View {
     @ObservedObject private var loginUserViewModel: LoginUserViewModel = LoginUserViewModel()
     @State private var showModal: Bool = false
     
-    var body: some View { 
+    var body: some View {
         Group {
-            if loginUserViewModel.loginCompleated {
+            if loginUserViewModel.loginCompleated  {
                 BudgetListView()
             } else {
                 VStack{
@@ -38,13 +38,13 @@ struct LoginView: View {
                     Button(action: {
                         self.loginUser()
                     }, label: {
-                        Text("Login")
+                        ButtonText(text: "Login")
                     })
                     
                     Button(action: {
                         self.showRegistrationModal()
                     }) {
-                        Text("Register!")
+                        ButtonText(text: "Register")
                     }
                         
                     .sheet(isPresented: self.$showModal){
